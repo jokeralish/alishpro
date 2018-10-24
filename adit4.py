@@ -9,39 +9,45 @@ from datetime import timedelta, date
 from datetime import datetime
 from bs4 import BeautifulSoup
 
-aditmadzs = LineClient(authToken='TOKEN')
+aditmadzs = LineClient(authToken='EyxjdRCCWHZvRcvb98r9.4SW+H8TowVbxasj4kd9Cgq.5IzgefU5+fNkGS9LpQ1DgInX5QyYviRVyoh+ySkZMCQ=')
 aditmadzs.log("Auth Token : " + str(aditmadzs.authToken))
 channel = LineChannel(aditmadzs)
 aditmadzs.log("Channel Access Token : " + str(channel.channelAccessToken))
 
-ki = LineClient(authToken='TOKEN LU')
+ki = LineClient(authToken='EyCMqzhQzoV8MtLv2r9e.+jkW9+RmeVa5eWQ4sEctpG.zJ1U7VNw7MbG5/XlaMfXu0gZm5+IXNnMxE+sJwIiVpE=')
 ki.log("Auth Token : " + str(ki.authToken))
 channel1 = LineChannel(ki)
 ki.log("Channel Access Token : " + str(channel1.channelAccessToken))
 
-kk = LineClient(authToken='TOKEN LU')
+kk = LineClient(authToken='Eyu6GxYkFwQfWPCfE5kd.2/2G/wzDrPWD4ENd74KV3q.1nUt15F5vvxLWNTDqf3Wm4FGxlzzPTKLwxsqZH7gBk0=')
 kk.log("Auth Token : " + str(kk.authToken))
 channel2 = LineChannel(kk)
 kk.log("Channel Access Token : " + str(channel2.channelAccessToken))
 
-kc = LineClient(authToken='TOKEN LU')
+kc = LineClient(authToken='EyfE4xZVT5vxJ7J24scc.wnAlloDplFCBchY9W0jHRa.2R9kdBXjYR5g2s3m+wqPMVp+uaJrDA+fg6/ROQVXISQ=')
 kc.log("Auth Token : " + str(kc.authToken))
 channel3 = LineChannel(kc)
 kc.log("Channel Access Token : " + str(channel3.channelAccessToken))
 
+kb = LineClient(authToken='.EyAeGIrr4dsBX6VwWMg4.pde2KJeBHPvkFvAKqncO9a.+2HxYrsakC6QufzHG84VXhSonD56pUmfh6cYf50gL8M=')
+kb.log("Auth Token : " + str(kc.authToken))
+channel4 = LineChannel(kc)
+kb.log("Channel Access Token : " + str(channel3.channelAccessToken))
+
 poll = LinePoll(aditmadzs)
 call = aditmadzs
-creator = ["u874a7502c02896b2edbb3445c2615d35"]
-owner = ["u874a7502c02896b2edbb3445c2615d35"]
-admin = ["u874a7502c02896b2edbb3445c2615d35"]
-staff = ["u874a7502c02896b2edbb3445c2615d35"]
+creator = ["ube71e680ce15b31bf6de5a10798080d5"]
+owner = ["ube71e680ce15b31bf6de5a10798080d5"]
+admin = ["ube71e680ce15b31bf6de5a10798080d5"]
+staff = ["ube71e680ce15b31bf6de5a10798080d5"]
 mid = aditmadzs.getProfile().mid
 Amid = ki.getProfile().mid
 Bmid = kk.getProfile().mid
 Cmid = kc.getProfile().mid
-KAC = [aditmadzs,ki,kk,kc]
-ABC = [ki,kk,kc]
-Bots = [mid,Amid,Bmid,Cmid]
+Dmid = kb.getProfile().mid
+KAC = [aditmadzs,ki,kk,kc,kb]
+ABC = [ki,kk,kc,kb]
+Bots = [mid,Amid,Bmid,Cmid,Dmid]
 Madzs = admin + staff
 
 protectqr = []
@@ -66,6 +72,7 @@ myProfile["pictureStatus"] = MadzsProfile.pictureStatus
 responsename1 = ki.getProfile().displayName
 responsename2 = kk.getProfile().displayName
 responsename3 = kc.getProfile().displayName
+responsename3 = kb.getProfile().displayName
 
 cctv = {
     "cyduk":{},
@@ -2081,6 +2088,7 @@ def bot(op):
                                 ki.sendMessage(msg.to,responsename1)
                                 kk.sendMessage(msg.to,responsename2)
                                 kc.sendMessage(msg.to,responsename3)
+                                kb.sendMessage(msg.to,responsename4)
     
                         elif cmd == "join dit":
                           if wait["selfbot"] == True:
@@ -2094,6 +2102,7 @@ def bot(op):
                                 ki.acceptGroupInvitationByTicket(msg.to,Ticket)
                                 kk.acceptGroupInvitationByTicket(msg.to,Ticket)
                                 kc.acceptGroupInvitationByTicket(msg.to,Ticket)
+                                kb.acceptGroupInvitationByTicket(msg.to,Ticket)
                                 G = kc.getGroup(msg.to)
                                 G.preventedJoinByTicket = True
                                 kc.updateGroup(G)
@@ -2106,6 +2115,7 @@ def bot(op):
                                 ki.leaveGroup(msg.to)
                                 kk.leaveGroup(msg.to)
                                 kc.leaveGroup(msg.to)
+                                 kb.leaveGroup(msg.to)
 
                         elif cmd == "sprespon":
                           if wait["selfbot"] == True:
