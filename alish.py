@@ -29,10 +29,10 @@ kc.log("Auth Token : " + str(kc.authToken))
 channel3 = LineChannel(kc)
 kc.log("Channel Access Token : " + str(channel3.channelAccessToken))
 
-kb = LineClient(authToken='.EyAeGIrr4dsBX6VwWMg4.pde2KJeBHPvkFvAKqncO9a.+2HxYrsakC6QufzHG84VXhSonD56pUmfh6cYf50gL8M=')
-kb.log("Auth Token : " + str(kc.authToken))
-channel4 = LineChannel(kc)
-kb.log("Channel Access Token : " + str(channel3.channelAccessToken))
+#kb = LineClient(authToken='.EyAeGIrr4dsBX6VwWMg4.pde2KJeBHPvkFvAKqncO9a.+2HxYrsakC6QufzHG84VXhSonD56pUmfh6cYf50gL8M=')
+#kb.log("Auth Token : " + str(kc.authToken))
+#channel4 = LineChannel(kc)
+#kb.log("Channel Access Token : " + str(channel3.channelAccessToken))
 
 poll = LinePoll(aditmadzs)
 call = aditmadzs
