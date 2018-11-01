@@ -72,7 +72,7 @@ myProfile["pictureStatus"] = MadzsProfile.pictureStatus
 responsename1 = ki.getProfile().displayName
 responsename2 = kk.getProfile().displayName
 responsename3 = kc.getProfile().displayName
-responsename3 = kb.getProfile().displayName
+#responsename3 = kb.getProfile().displayName
 
 cctv = {
     "cyduk":{},
@@ -2088,7 +2088,7 @@ def bot(op):
                                 ki.sendMessage(msg.to,responsename1)
                                 kk.sendMessage(msg.to,responsename2)
                                 kc.sendMessage(msg.to,responsename3)
-                                kb.sendMessage(msg.to,responsename4)
+                    #            kb.sendMessage(msg.to,responsename4)
     
                         elif cmd == "join dit":
                           if wait["selfbot"] == True:
@@ -2102,9 +2102,9 @@ def bot(op):
                                 ki.acceptGroupInvitationByTicket(msg.to,Ticket)
                                 kk.acceptGroupInvitationByTicket(msg.to,Ticket)
                                 kc.acceptGroupInvitationByTicket(msg.to,Ticket)
-                                kb.acceptGroupInvitationByTicket(msg.to,Ticket)
-                                G = kc.getGroup(msg.to)
-                                G.preventedJoinByTicket = True
+                      #          kb.acceptGroupInvitationByTicket(msg.to,Ticket)
+                          #      G = kc.getGroup(msg.to)
+                            #    G.preventedJoinByTicket = True
                                 kc.updateGroup(G)
 
                         elif cmd == "bye dit":
@@ -2115,7 +2115,7 @@ def bot(op):
                                 ki.leaveGroup(msg.to)
                                 kk.leaveGroup(msg.to)
                                 kc.leaveGroup(msg.to)
-                                kb.leaveGroup(msg.to)
+                         #       kb.leaveGroup(msg.to)
 
                         elif cmd == "sprespon":
                           if wait["selfbot"] == True:
