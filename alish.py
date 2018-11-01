@@ -44,10 +44,10 @@ mid = aditmadzs.getProfile().mid
 Amid = ki.getProfile().mid
 Bmid = kk.getProfile().mid
 Cmid = kc.getProfile().mid
-Dmid = kb.getProfile().mid
-KAC = [aditmadzs,ki,kk,kc,kb]
+#Dmid = kb.getProfile().mid
+KAC = [aditmadzs,ki,kk,kc]
 ABC = [ki,kk,kc,kb]
-Bots = [mid,Amid,Bmid,Cmid,Dmid]
+Bots = [mid,Amid,Bmid,Cmid]
 Madzs = admin + staff
 
 protectqr = []
