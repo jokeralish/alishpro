@@ -46,7 +46,7 @@ Bmid = kk.getProfile().mid
 Cmid = kc.getProfile().mid
 #Dmid = kb.getProfile().mid
 KAC = [aditmadzs,ki,kk,kc]
-ABC = [ki,kk,kc,kb]
+ABC = [ki,kk,kc]
 Bots = [mid,Amid,Bmid,Cmid]
 Madzs = admin + staff
 
