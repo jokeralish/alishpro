@@ -9,10 +9,10 @@ from datetime import timedelta, date
 from datetime import datetime
 from bs4 import BeautifulSoup
 
-aditmadzs = LineClient(authToken='EyxjdRCCWHZvRcvb98r9.4SW+H8TowVbxasj4kd9Cgq.5IzgefU5+fNkGS9LpQ1DgInX5QyYviRVyoh+ySkZMCQ=')
-aditmadzs.log("Auth Token : " + str(aditmadzs.authToken))
-channel = LineChannel(aditmadzs)
-aditmadzs.log("Channel Access Token : " + str(channel.channelAccessToken))
+ali = LineClient(authToken='EyxjdRCCWHZvRcvb98r9.4SW+H8TowVbxasj4kd9Cgq.5IzgefU5+fNkGS9LpQ1DgInX5QyYviRVyoh+ySkZMCQ=')
+ali.log("Auth Token : " + str(ali.authToken))
+channel = LineChannel(ali)
+ali.log("Channel Access Token : " + str(channel.channelAccessToken))
 
 ki = LineClient(authToken='EyCMqzhQzoV8MtLv2r9e.+jkW9+RmeVa5eWQ4sEctpG.zJ1U7VNw7MbG5/XlaMfXu0gZm5+IXNnMxE+sJwIiVpE=')
 ki.log("Auth Token : " + str(ki.authToken))
@@ -34,18 +34,18 @@ kc.log("Channel Access Token : " + str(channel3.channelAccessToken))
 #channel4 = LineChannel(kc)
 #kb.log("Channel Access Token : " + str(channel3.channelAccessToken))
 
-poll = LinePoll(aditmadzs)
-call = aditmadzs
+poll = LinePoll(ali)
+call = ali
 creator = ["ube71e680ce15b31bf6de5a10798080d5"]
 owner = ["ube71e680ce15b31bf6de5a10798080d5"]
 admin = ["ube71e680ce15b31bf6de5a10798080d5"]
 staff = ["ube71e680ce15b31bf6de5a10798080d5"]
-mid = aditmadzs.getProfile().mid
+mid = ali.getProfile().mid
 Amid = ki.getProfile().mid
 Bmid = kk.getProfile().mid
 Cmid = kc.getProfile().mid
 #Dmid = kb.getProfile().mid
-KAC = [aditmadzs,ki,kk,kc]
+KAC = [ali,ki,kk,kc]
 ABC = [ki,kk,kc]
 Bots = [mid,Amid,Bmid,Cmid]
 Madzs = admin + staff
@@ -64,7 +64,7 @@ myProfile = {
 	"pictureStatus": ""
 }
 
-MadzsProfile = aditmadzs.getProfile()
+MadzsProfile = ali.getProfile()
 myProfile["displayName"] = MadzsProfile.displayName
 myProfile["statusMessage"] = MadzsProfile.statusMessage
 myProfile["pictureStatus"] = MadzsProfile.pictureStatus
@@ -201,7 +201,7 @@ def runtime(secs):
 def sendMentionFooter(to, text="", mids=[]):
     arrData = ""
     arr = []
-    mention = "@Aditmadzs "
+    mention = "@ali "
     if mids == []:
         raise Exception("Invalid mids")
     if "@!" in text:
@@ -224,7 +224,7 @@ def sendMentionFooter(to, text="", mids=[]):
         arrData = {'S':str(slen), 'E':str(elen - 4), 'M':mids[0]}
         arr.append(arrData)
         textx += mention + str(text)
-    aditmadzs.sendMessage(to, textx, {'AGENT_NAME':'@aditmadzs1 on Instagram', 'AGENT_LINK': 'https://www.instagram.com/aditmadzs1', 'AGENT_ICON': "http://dl.profile.line-cdn.net/" + aditmadzs.getProfile().picturePath, 'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
+    ali.sendMessage(to, textx, {'AGENT_NAME':'@ali1 on Instagram', 'AGENT_LINK': 'https://www.instagram.com/ali1', 'AGENT_ICON': "http://dl.profile.line-cdn.net/" + ali.getProfile().picturePath, 'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
 
 def sendMessageFooter(to, text, name, url, iconlink):
         contentMetadata = {
@@ -232,28 +232,28 @@ def sendMessageFooter(to, text, name, url, iconlink):
             'AGENT_LINK': url,
             'AGENT_ICON': iconlink
         }
-        return aditmadzs.sendMessage(to, text, contentMetadata, 0)
+        return ali.sendMessage(to, text, contentMetadata, 0)
     
 
 def sendMessageWithFooter(to, text):
- aditmadzs.reissueUserTicket()
- madzs = aditmadzs.getProfile()
- ticket = "http://line.me/ti/p/"+aditmadzs.getUserTicket().id
- pict = "http://dl.profile.line-cdn.net/"+aditmadzs.pictureStatus
- name = "「 Aditmadzs 」"
- Aditmadzs = {"AGENT_ICON": pict,
+ ali.reissueUserTicket()
+ madzs = ali.getProfile()
+ ticket = "http://line.me/ti/p/"+ali.getUserTicket().id
+ pict = "http://dl.profile.line-cdn.net/"+ali.pictureStatus
+ name = "「 ali 」"
+ ali = {"AGENT_ICON": pict,
      "AGENT_NAME": name,
      "AGENT_LINK": ticket
  }
- aditmadzs.sendMessage(to, text, contentMetadata=Aditmadzs)
+ ali.sendMessage(to, text, contentMetadata=ali)
 
 def sendMentionV10(to, text,name, url, iconlink):
-    aditmadzs.sendMessage(to, text, {'AGENT_NAME': name,'AGENT_LINK': url,'AGENT_ICON': iconlink })
+    ali.sendMessage(to, text, {'AGENT_NAME': name,'AGENT_LINK': url,'AGENT_ICON': iconlink })
 
 def mentionMembers(to, mid,name,url,iconlink):
     try:
         arrData = ""
-        ginfo = aditmadzs.getGroup(to)
+        ginfo = ali.getGroup(to)
         textx = "    ⊰❂⊱Mention Members⊰❂⊱\n\n•1. "
         arr = []
         no = 1
@@ -269,9 +269,9 @@ def mentionMembers(to, mid,name,url,iconlink):
                 textx += "•{}. ".format(str(no))
             else:
                 textx += "\nTotal: {} members".format(str(len(mid)))
-        aditmadzs.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}'),'AGENT_NAME': name,'AGENT_LINK': url,'AGENT_ICON': iconlink },0)
+        ali.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}'),'AGENT_NAME': name,'AGENT_LINK': url,'AGENT_ICON': iconlink },0)
     except Exception as error:
-        aditmadzs.sendMessage(to, "[ INFO ] Error :\n" + str(error))
+        ali.sendMessage(to, "[ INFO ] Error :\n" + str(error))
 
 def welcomeMembers(to, mid):
     try:
@@ -281,7 +281,7 @@ def welcomeMembers(to, mid):
         no = 1
         num = 2
         for i in mid:
-            ginfo = aditmadzs.getGroup(to)
+            ginfo = ali.getGroup(to)
             mention = "@x\n"
             slen = str(len(textx))
             elen = str(len(textx) + len(mention) - 1)
@@ -294,12 +294,12 @@ def welcomeMembers(to, mid):
                 num=(num+1)
             else:
                 try:
-                    no = "\n  ╰══[ {} ]".format(str(aditmadzs.getGroup(to).name))
+                    no = "\n  ╰══[ {} ]".format(str(ali.getGroup(to).name))
                 except:
                     no = "\n  ╰══[ Success ]"
-        aditmadzs.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
+        ali.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
     except Exception as error:
-        aditmadzs.sendMessage(to, "[ INFO ] Error :\n" + str(error))
+        ali.sendMessage(to, "[ INFO ] Error :\n" + str(error))
         
 def leaveMembers(to, mid):
     try:
@@ -309,7 +309,7 @@ def leaveMembers(to, mid):
         no = 1
         num = 2
         for i in mid:
-            ginfo = aditmadzs.getGroup(to)
+            ginfo = ali.getGroup(to)
             mention = "@x\n"
             slen = str(len(textx))
             elen = str(len(textx) + len(mention) - 1)
@@ -322,12 +322,12 @@ def leaveMembers(to, mid):
                 num=(num+1)
             else:
                 try:
-                    no = "\n  ╰══[ {} ]".format(str(aditmadzs.getGroup(to).name))
+                    no = "\n  ╰══[ {} ]".format(str(ali.getGroup(to).name))
                 except:
                     no = "\n  ╰══[ Success ]"
-        aditmadzs.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
+        ali.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
     except Exception as error:
-        aditmadzs.sendMessage(to, "[ INFO ] Error :\n" + str(error))        
+        ali.sendMessage(to, "[ INFO ] Error :\n" + str(error))        
 
 def sendMention(to, mid, firstmessage):
     try:
@@ -344,16 +344,16 @@ def sendMention(to, mid, firstmessage):
         hari = (str(future - today))
         comma = hari.find(",")
         hari = hari[:comma]
-        teman = aditmadzs.getAllContactIds()
-        gid = aditmadzs.getGroupIdsJoined()
+        teman = ali.getAllContactIds()
+        gid = ali.getGroupIdsJoined()
         tz = pytz.timezone("Asia/Jakarta")
         timeNow = datetime.now(tz=tz)
         eltime = time.time() - mulai
         bot = runtime(eltime)
-        text += mention+"»» Jam : "+datetime.strftime(timeNow,'%H:%M:%S')+" Wib\n🌟 Group : "+str(len(gid))+"\n»» Teman : "+str(len(teman))+"\n»» Version : http://github.com/Aditmadzs/Protect4\n»» Tanggal : "+datetime.strftime(timeNow,'%Y-%m-%d')+"\n»» Runtime : \n»» • "+bot
-        aditmadzs.sendMessage(to, text, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
+        text += mention+"»» Jam : "+datetime.strftime(timeNow,'%H:%M:%S')+" Wib\n🌟 Group : "+str(len(gid))+"\n»» Teman : "+str(len(teman))+"\n»» Version : http://github.com/ali/Protect4\n»» Tanggal : "+datetime.strftime(timeNow,'%Y-%m-%d')+"\n»» Runtime : \n»» • "+bot
+        ali.sendMessage(to, text, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
     except Exception as error:
-        aditmadzs.sendMessage(to, "[ INFO ] Error :\n" + str(error))
+        ali.sendMessage(to, "[ INFO ] Error :\n" + str(error))
 
 def command(text):
     pesan = text.lower()
@@ -367,7 +367,7 @@ def help():
     key = Setmain["keyCommand"]
     key = key.title()
     helpMessage = "╭═══════════════════════════" + "\n" + \
-                  "║»»═══════ Aditmadzs ════════" + "\n" + \
+                  "║»»═══════ ali ════════" + "\n" + \
                   "║»══════════════════════════" + "\n" + \
                   "║»»═════ Help Message ══════" + "\n" + \
                   "║»══════════════════════════" + "\n" + \
@@ -385,7 +385,7 @@ def help():
 				  "║»» " + key + "Status\n" + \
 				  "║»════════════════════════════" + "\n" + \
                   "║»══ http://line.me/ti/p/~adit_cmct" + "\n" + \
-                  "╰═════ CREATOR: ©Aditmadzs™"
+                  "╰═════ CREATOR: ©ali™"
     return helpMessage
     
     
@@ -394,7 +394,7 @@ def helpcreator():
     key = Setmain["keyCommand"]
     key = key.title()
     helpMessage1 = "╭═════════════════════════" + "\n" + \
-                  "║»»══════ Aditmadzs ════════" + "\n" + \
+                  "║»»══════ ali ════════" + "\n" + \
                   "║»═════════════════════════" + "\n" + \
                   "║»»══════ Help BOT ═══════" + "\n" + \
                   "║»════════════════════════" + "\n" + \
@@ -431,14 +431,14 @@ def helpcreator():
 				  "║»» " + key + "Self「on/off」\n" + \
                   "║»═════════════════════════" + "\n" + \
                   "║»══ http://line.me/ti/p/~adit_cmct" + "\n" + \
-                  "╰═════ CREATOR: ©Aditmadzs™"
+                  "╰═════ CREATOR: ©ali™"
     return helpMessage1
 
 def helpblacklist():
     key = Setmain["keyCommand"]
     key = key.title()
     helpMessage3 = "╭══════════════════════════" + "\n" + \
-                  "║»»═══════ Aditmadzs ════════" + "\n" + \
+                  "║»»═══════ ali ════════" + "\n" + \
                   "║»══════════════════════════" + "\n" + \
                   "║»»═════ Help Blacklist ══════" + "\n" + \
                   "║»═════════════════════════" + "\n" + \
@@ -452,14 +452,14 @@ def helpblacklist():
 				  "║»» " + key + "Unban:on\n" + \
 				  "║»══════════════════════════" + "\n" + \
                   "║»══ http://line.me/ti/p/~adit_cmct" + "\n" + \
-                  "╰═════ CREATOR: ©Aditmadzs™"
+                  "╰═════ CREATOR: ©ali™"
     return helpMessage3
 
 def helpadmin():
     key = Setmain["keyCommand"]
     key = key.title()
     helpMessage4 = "╭══════════════════════════" + "\n" + \
-                  "║»»═══════ Aditmadzs ════════" + "\n" + \
+                  "║»»═══════ ali ════════" + "\n" + \
                   "║»══════════════════════════" + "\n" + \
                   "║»»═════ Help Admin ══════" + "\n" + \
                   "║»═════════════════════════" + "\n" + \
@@ -479,14 +479,14 @@ def helpadmin():
                   "║»» " + key + "Staffdell「@」\n" + \
                   "║»═══════════════════════════" + "\n" + \
                   "║»══ http://line.me/ti/p/~adit_cmct" + "\n" + \
-                  "╰═════ CREATOR: ©Aditmadzs™"
+                  "╰═════ CREATOR: ©ali™"
     return helpMessage4
     	
 def helpsetting():
     key = Setmain["keyCommand"]
     key = key.title()
     helpMessage5 = "╭══════════════════════════" + "\n" + \
-                  "║»»═══════ Aditmadzs ════════" + "\n" + \
+                  "║»»═══════ ali ════════" + "\n" + \
                   "║»══════════════════════════" + "\n" + \
                   "║»»═════ Help Setting ══════" + "\n" + \
                   "║»═════════════════════════" + "\n" + \
@@ -501,14 +501,14 @@ def helpsetting():
                   "║»» " + key + "Welcome「on/off」\n" + \
                   "║»═══════════════════════════" + "\n" + \
                   "║»══ http://line.me/ti/p/~adit_cmct" + "\n" + \
-                  "╰═════ CREATOR: ©Aditmadzs™"
+                  "╰═════ CREATOR: ©ali™"
     return helpMessage5
     
 def helpprotect():
     key = Setmain["keyCommand"]
     key = key.title()
     helpMessage6 = "╭══════════════════════════" + "\n" + \
-                  "║»»═══════ Aditmadzs ════════" + "\n" + \
+                  "║»»═══════ ali ════════" + "\n" + \
                   "║»══════════════════════════" + "\n" + \
                   "║»»═════ Help Protect ══════" + "\n" + \
                   "║»═════════════════════════" + "\n" + \
@@ -523,14 +523,14 @@ def helpprotect():
                   "║»» " + key + "Protectinvite「on/off」\n" + \
 				  "║»═══════════════════════════" + "\n" + \
                   "║»══ http://line.me/ti/p/~adit_cmct" + "\n" + \
-                  "╰═════ CREATOR: ©Aditmadzs™"
+                  "╰═════ CREATOR: ©ali™"
     return helpMessage6
 	
 def helpbot():
     key = Setmain["keyCommand"]
     key = key.title()
     helpMessage8 = "╭══════════════════════════" + "\n" + \
-                  "║»»═══════ Aditmadzs ════════" + "\n" + \
+                  "║»»═══════ ali ════════" + "\n" + \
                   "║»══════════════════════════" + "\n" + \
                   "║»»═════ Help BOT ══════" + "\n" + \
                   "║»═════════════════════════" + "\n" + \
@@ -559,7 +559,7 @@ def helpbot():
                   "║»» " + key + "Tagall\n" + \
                   "║»══════════════════════════" + "\n" + \
                   "║»══ http://line.me/ti/p/~adit_cmct" + "\n" + \
-                  "╰═════ CREATOR: ©Aditmadzs™"
+                  "╰═════ CREATOR: ©ali™"
     return helpMessage8
 
 def bot(op):
@@ -573,13 +573,13 @@ def bot(op):
         if op.type == 11:
             if op.param1 in protectqr:
                 try:
-                    if aditmadzs.getGroup(op.param1).preventedJoinByTicket == False:
+                    if ali.getGroup(op.param1).preventedJoinByTicket == False:
                         if op.param2 not in Bots and op.param2 not in owner and op.param2 not in admin and op.param2 not in staff:
-                            aditmadzs.reissueGroupTicket(op.param1)
-                            X = aditmadzs.getGroup(op.param1)
+                            ali.reissueGroupTicket(op.param1)
+                            X = ali.getGroup(op.param1)
                             X.preventedJoinByTicket = True
-                            aditmadzs.updateGroup(X)
-                            aditmadzs.sendMessage(op.param1, None, contentMetadata={'mid': op.param2}, contentType=13)
+                            ali.updateGroup(X)
+                            ali.sendMessage(op.param1, None, contentMetadata={'mid': op.param2}, contentType=13)
                 except:
                     try:
                         if ki.getGroup(op.param1).preventedJoinByTicket == False:
@@ -588,7 +588,7 @@ def bot(op):
                                 X = ki.getGroup(op.param1)
                                 X.preventedJoinByTicket = True
                                 ki.updateGroup(X)
-                                aditmadzs.sendMessage(op.param1, None, contentMetadata={'mid': op.param2}, contentType=13)
+                                ali.sendMessage(op.param1, None, contentMetadata={'mid': op.param2}, contentType=13)
                     except:
                         try:
                             if kk.getGroup(op.param1).preventedJoinByTicket == False:
@@ -597,7 +597,7 @@ def bot(op):
                                     X = kk.getGroup(op.param1)
                                     X.preventedJoinByTicket = True
                                     kk.updateGroup(X)
-                                    aditmadzs.sendMessage(op.param1, None, contentMetadata={'mid': op.param2}, contentType=13)
+                                    ali.sendMessage(op.param1, None, contentMetadata={'mid': op.param2}, contentType=13)
                         except:
                             try:
                                 if kc.getGroup(op.param1).preventedJoinByTicket == False:
@@ -606,16 +606,16 @@ def bot(op):
                                         X = kc.getGroup(op.param1)
                                         X.preventedJoinByTicket = True
                                         kc.updateGroup(X)
-                                        aditmadzs.sendMessage(op.param1, None, contentMetadata={'mid': op.param2}, contentType=13)
+                                        ali.sendMessage(op.param1, None, contentMetadata={'mid': op.param2}, contentType=13)
                             except:
                                 try:
-                                    if aditmadzs.getGroup(op.param1).preventedJoinByTicket == False:
+                                    if ali.getGroup(op.param1).preventedJoinByTicket == False:
                                         if op.param2 not in Bots and op.param2 not in owner and op.param2 not in admin and op.param2 not in staff:
-                                            aditmadzs.reissueGroupTicket(op.param1)
-                                            X = aditmadzs.getGroup(op.param1)
+                                            ali.reissueGroupTicket(op.param1)
+                                            X = ali.getGroup(op.param1)
                                             X.preventedJoinByTicket = True
-                                            aditmadzs.updateGroup(X)
-                                            aditmadzs.sendMessage(op.param1, None, contentMetadata={'mid': op.param2}, contentType=13)
+                                            ali.updateGroup(X)
+                                            ali.sendMessage(op.param1, None, contentMetadata={'mid': op.param2}, contentType=13)
                                 except:
                                     try:
                                         if ki.getGroup(op.param1).preventedJoinByTicket == False:
@@ -624,33 +624,33 @@ def bot(op):
                                                 X = ki.getGroup(op.param1)
                                                 X.preventedJoinByTicket = True
                                                 ki.updateGroup(X)
-                                                aditmadzs.sendMessage(op.param1, None, contentMetadata={'mid': op.param2}, contentType=13)
+                                                ali.sendMessage(op.param1, None, contentMetadata={'mid': op.param2}, contentType=13)
                                     except:
                                         pass
         if op.type == 13:
             if mid in op.param3:
                 if wait["autoLeave"] == True:
                     if op.param2 not in Bots and op.param2 not in owner and op.param2 not in admin and op.param2 not in staff:
-                        aditmadzs.acceptGroupInvitation(op.param1)
-                        ginfo = aditmadzs.getGroup(op.param1)
-                        aditmadzs.sendMessage(op.param1,"Selamat Tinggal\n Group " +str(ginfo.name))
-                        aditmadzs.leaveGroup(op.param1)
+                        ali.acceptGroupInvitation(op.param1)
+                        ginfo = ali.getGroup(op.param1)
+                        ali.sendMessage(op.param1,"Selamat Tinggal\n Group " +str(ginfo.name))
+                        ali.leaveGroup(op.param1)
                     else:
-                        aditmadzs.acceptGroupInvitation(op.param1)
-                        ginfo = aditmadzs.getGroup(op.param1)
-                        aditmadzs.sendMessage(op.param1,"Hai " + str(ginfo.name))
+                        ali.acceptGroupInvitation(op.param1)
+                        ginfo = ali.getGroup(op.param1)
+                        ali.sendMessage(op.param1,"Hai " + str(ginfo.name))
 
         if op.type == 13:
             if mid in op.param3:
                 if wait["autoJoin"] == True:
                     if op.param2 not in Bots and op.param2 not in owner and op.param2 not in admin and op.param2 not in staff:
-                        aditmadzs.acceptGroupInvitation(op.param1)
-                        ginfo = aditmadzs.getGroup(op.param1)
-                        aditmadzs.sendMessage(op.param1,"Haii, salken yaa ^^")
+                        ali.acceptGroupInvitation(op.param1)
+                        ginfo = ali.getGroup(op.param1)
+                        ali.sendMessage(op.param1,"Haii, salken yaa ^^")
                     else:
-                        aditmadzs.acceptGroupInvitation(op.param1)
-                        ginfo = aditmadzs.getGroup(op.param1)
-                        aditmadzs.sendMessage(op.param1,"Haii, salken yaa ^^")
+                        ali.acceptGroupInvitation(op.param1)
+                        ginfo = ali.getGroup(op.param1)
+                        ali.sendMessage(op.param1,"Haii, salken yaa ^^")
             if Amid in op.param3:
                 if wait["autoJoin"] == True:
                     if op.param2 not in Bots and op.param2 not in owner and op.param2 not in admin and op.param2 not in staff:
@@ -689,7 +689,7 @@ def bot(op):
             if op.param1 in protectinvite:
                 if op.param2 not in Bots and op.param2 not in owner and op.param2 not in admin and op.param2 not in staff:
                     try:
-                        group = aditmadzs.getGroup(op.param1)
+                        group = ali.getGroup(op.param1)
                         gMembMids = [contact.mid for contact in group.invitee]
                         for _mid in gMembMids:
                             random.choice(ABC).cancelGroupInvitation(op.param1,[_mid])
@@ -718,11 +718,11 @@ def bot(op):
             if op.param1 in welcome:
                 if op.param2 in Bots:
                     pass
-                ginfo = aditmadzs.getGroup(op.param1)
-                contact = aditmadzs.getContact(op.param2).picturePath
+                ginfo = ali.getGroup(op.param1)
+                contact = ali.getContact(op.param2).picturePath
                 image = 'http://dl.profile.line.naver.jp'+contact
                 leaveMembers(op.param1, [op.param2])
-                aditmadzs.sendImageWithURL(op.param1, image)
+                ali.sendImageWithURL(op.param1, image)
 
         if op.type == 17:
             if op.param2 in wait["blacklist"]:
@@ -734,11 +734,11 @@ def bot(op):
             if op.param1 in welcome:
                 if op.param2 in Bots:
                     pass
-                ginfo = aditmadzs.getGroup(op.param1)
-                contact = aditmadzs.getContact(op.param2)
+                ginfo = ali.getGroup(op.param1)
+                contact = ali.getContact(op.param2)
                 image = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
                 welcomeMembers(op.param1, [op.param2])
-                aditmadzs.sendImageWithURL(op.param1, image)
+                ali.sendImageWithURL(op.param1, image)
 
         if op.type == 17:
             if op.param1 in protectjoin:
@@ -758,7 +758,7 @@ def bot(op):
                             except:
                                 try:
                                     if op.param3 not in wait["blacklist"]:
-                                        aditmadzs.kickoutFromGroup(op.param1,[op.param2])
+                                        ali.kickoutFromGroup(op.param1,[op.param2])
                                 except:
                                     pass
                 return
@@ -771,7 +771,7 @@ def bot(op):
                     if (wait["message"] in [" "," ","\n",None]):
                         pass
                     else:
-                        aditmadzs.sendMessage(op.param1, wait["message"])
+                        ali.sendMessage(op.param1, wait["message"])
 
 #================================================================================
         if op.type == 19:
@@ -814,8 +814,8 @@ def bot(op):
                                     except:
                                         try:
                                             if op.param3 not in wait["blacklist"]:
-                                                aditmadzs.kickoutFromGroup(op.param1,[op.param2])
-                                                aditmadzs.inviteIntoGroup(op.param1,[Zmid])
+                                                ali.kickoutFromGroup(op.param1,[op.param2])
+                                                ali.inviteIntoGroup(op.param1,[Zmid])
                                         except:
                                             pass
                 return
@@ -834,17 +834,17 @@ def bot(op):
                     wait["blacklist"][op.param2] = True
                     try:
                         ki.inviteIntoGroup(op.param1,[op.param3])
-                        aditmadzs.acceptGroupInvitation(op.param1)
+                        ali.acceptGroupInvitation(op.param1)
                         ki.kickoutFromGroup(op.param1,[op.param2])
                     except:
                         try:
                             kk.inviteIntoGroup(op.param1,[op.param3])
-                            aditmadzs.acceptGroupInvitation(op.param1)
+                            ali.acceptGroupInvitation(op.param1)
                             kk.kickoutFromGroup(op.param1,[op.param2])
                         except:
                             try:
                                 kc.inviteIntoGroup(op.param1,[op.param3])
-                                aditmadzs.acceptGroupInvitation(op.param1)
+                                ali.acceptGroupInvitation(op.param1)
                                 kk.kickoutFromGroup(op.param1,[op.param2])
                             except:
                                 try:
@@ -852,7 +852,7 @@ def bot(op):
                                     G.preventedJoinByTicket = False
                                     ki.updateGroup(G)
                                     Ticket = ki.reissueGroupTicket(op.param1)
-                                    aditmadzs.acceptGroupInvitationByTicket(op.param1,Ticket)
+                                    ali.acceptGroupInvitationByTicket(op.param1,Ticket)
                                     ki.acceptGroupInvitationByTicket(op.param1,Ticket)
                                     kk.acceptGroupInvitationByTicket(op.param1,Ticket)
                                     kc.acceptGroupInvitationByTicket(op.param1,Ticket)
@@ -864,12 +864,12 @@ def bot(op):
                                 except:
                                     try:
                                         ki.inviteIntoGroup(op.param1,[op.param3])
-                                        aditmadzs.acceptGroupInvitation(op.param1)
+                                        ali.acceptGroupInvitation(op.param1)
                                         ki.kickoutFromGroup(op.param1,[op.param2])
                                     except:
                                         try:
                                             kk.inviteIntoGroup(op.param1,[op.param3])
-                                            aditmadzs.acceptGroupInvitation(op.param1)
+                                            ali.acceptGroupInvitation(op.param1)
                                             kk.kickoutFromGroup(op.param1,[op.param2])
                                         except:
                                             pass
@@ -897,16 +897,16 @@ def bot(op):
                             kc.kickoutFromGroup(op.param1,[op.param2])
                         except:
                             try:
-                                aditmadzs.inviteIntoGroup(op.param1,[op.param3])
+                                ali.inviteIntoGroup(op.param1,[op.param3])
                                 ki.acceptGroupInvitation(op.param1)
-                                aditmadzs.kickoutFromGroup(op.param1,[op.param2])
+                                ali.kickoutFromGroup(op.param1,[op.param2])
                             except:
                                 try:
                                     G = kk.getGroup(op.param1)
                                     G.preventedJoinByTicket = False
                                     kk.updateGroup(G)
                                     Ticket = kk.reissueGroupTicket(op.param1)
-                                    aditmadzs.acceptGroupInvitationByTicket(op.param1,Ticket)
+                                    ali.acceptGroupInvitationByTicket(op.param1,Ticket)
                                     ki.acceptGroupInvitationByTicket(op.param1,Ticket)
                                     kk.acceptGroupInvitationByTicket(op.param1,Ticket)
                                     kc.acceptGroupInvitationByTicket(op.param1,Ticket)
@@ -946,9 +946,9 @@ def bot(op):
                         kc.kickoutFromGroup(op.param1,[op.param2])
                     except:
                         try:
-                            aditmadzs.inviteIntoGroup(op.param1,[op.param3])
+                            ali.inviteIntoGroup(op.param1,[op.param3])
                             kk.acceptGroupInvitation(op.param1)
-                            aditmadzs.kickoutFromGroup(op.param1,[op.param2])
+                            ali.kickoutFromGroup(op.param1,[op.param2])
                         except:
                             try:
                                 ki.inviteIntoGroup(op.param1,[op.param3])
@@ -960,7 +960,7 @@ def bot(op):
                                     G.preventedJoinByTicket = False
                                     kc.updateGroup(G)
                                     Ticket = kc.reissueGroupTicket(op.param1)
-                                    aditmadzs.acceptGroupInvitationByTicket(op.param1,Ticket)
+                                    ali.acceptGroupInvitationByTicket(op.param1,Ticket)
                                     ki.acceptGroupInvitationByTicket(op.param1,Ticket)
                                     kk.acceptGroupInvitationByTicket(op.param1,Ticket)
                                     kc.acceptGroupInvitationByTicket(op.param1,Ticket)
@@ -995,9 +995,9 @@ def bot(op):
                 else:
                     wait["blacklist"][op.param2] = True
                     try:
-                        aditmadzs.inviteIntoGroup(op.param1,[op.param3])
+                        ali.inviteIntoGroup(op.param1,[op.param3])
                         kc.acceptGroupInvitation(op.param1)
-                        aditmadzs.kickoutFromGroup(op.param1,[op.param2])
+                        ali.kickoutFromGroup(op.param1,[op.param2])
                     except:
                         try:
                             ki.inviteIntoGroup(op.param1,[op.param3])
@@ -1010,24 +1010,24 @@ def bot(op):
                                 kk.kickoutFromGroup(op.param1,[op.param2])
                             except:
                                 try:
-                                    G = aditmadzs.getGroup(op.param1)
+                                    G = ali.getGroup(op.param1)
                                     G.preventedJoinByTicket = False
-                                    aditmadzs.updateGroup(G)
-                                    Ticket = aditmadzs.reissueGroupTicket(op.param1)
-                                    aditmadzs.acceptGroupInvitationByTicket(op.param1,Ticket)
+                                    ali.updateGroup(G)
+                                    Ticket = ali.reissueGroupTicket(op.param1)
+                                    ali.acceptGroupInvitationByTicket(op.param1,Ticket)
                                     ki.acceptGroupInvitationByTicket(op.param1,Ticket)
                                     kk.acceptGroupInvitationByTicket(op.param1,Ticket)
                                     kc.acceptGroupInvitationByTicket(op.param1,Ticket)
-                                    aditmadzs.kickoutFromGroup(op.param1,[op.param2])
-                                    G = aditmadzs.getGroup(op.param1)
+                                    ali.kickoutFromGroup(op.param1,[op.param2])
+                                    G = ali.getGroup(op.param1)
                                     G.preventedJoinByTicket = True
-                                    aditmadzs.updateGroup(G)
-                                    Ticket = aditmadzs.reissueGroupTicket(op.param1)
+                                    ali.updateGroup(G)
+                                    Ticket = ali.reissueGroupTicket(op.param1)
                                 except:
                                     try:
-                                        aditmadzs.inviteIntoGroup(op.param1,[op.param3])
+                                        ali.inviteIntoGroup(op.param1,[op.param3])
                                         kc.acceptGroupInvitation(op.param1)
-                                        aditmadzs.kickoutFromGroup(op.param1,[op.param2])
+                                        ali.kickoutFromGroup(op.param1,[op.param2])
                                     except:
                                         try:
                                             ki.inviteIntoGroup(op.param1,[op.param3])
@@ -1049,9 +1049,9 @@ def bot(op):
                 else:
                     wait["blacklist"][op.param2] = True
                     try:
-                        aditmadzs.findAndAddContactsByMid(op.param1,admin)
-                        aditmadzs.inviteIntoGroup(op.param1,admin)
-                        aditmadzs.kickoutFromGroup(op.param1,[op.param2])
+                        ali.findAndAddContactsByMid(op.param1,admin)
+                        ali.inviteIntoGroup(op.param1,admin)
+                        ali.kickoutFromGroup(op.param1,[op.param2])
                     except:
                         try:
                             ki.findAndAddContactsByMid(op.param1,admin)
@@ -1099,11 +1099,11 @@ def bot(op):
 
         if op.type == 55:
             try:
-                if op.param1 in Setmain["ADITMADZSreadPoint"]:
-                   if op.param2 in Setmain["ADITMADZSreadMember"][op.param1]:
+                if op.param1 in Setmain["alireadPoint"]:
+                   if op.param2 in Setmain["alireadMember"][op.param1]:
                        pass
                    else:
-                       Setmain["ADITMADZSreadMember"][op.param1][op.param2] = True
+                       Setmain["alireadMember"][op.param1][op.param2] = True
                 else:
                    pass
             except:
@@ -1117,15 +1117,15 @@ def bot(op):
 
             if cctv['cyduk'][op.param1]==True:
                 if op.param1 in cctv['point']:
-                    Name = aditmadzs.getContact(op.param2).displayName
+                    Name = ali.getContact(op.param2).displayName
                     if Name in cctv['sidermem'][op.param1]:
                         pass
                     else:
                         cctv['sidermem'][op.param1] += "\n~ " + Name
                         siderMembers(op.param1, [op.param2])
-                        contact = aditmadzs.getContact(op.param2)
+                        contact = ali.getContact(op.param2)
                         image = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
-                        aditmadzs.sendImageWithURL(op.param1, image)                        
+                        ali.sendImageWithURL(op.param1, image)                        
                         
                     
         if op.type == 65:
@@ -1136,34 +1136,34 @@ def bot(op):
                     if msg_id in msg_dict:
                         if msg_dict[msg_id]["from"]:
                            if msg_dict[msg_id]["text"] == 'Gambarnya dibawah':
-                                ginfo = aditmadzs.getGroup(at)
-                                Aditmadzs = aditmadzs.getContact(msg_dict[msg_id]["from"])
+                                ginfo = ali.getGroup(at)
+                                ali = ali.getContact(msg_dict[msg_id]["from"])
                                 zx = ""
                                 zxc = ""
                                 zx2 = []
                                 xpesan =  "「 Gambar Dihapus 」\n• Pengirim : "
                                 ret_ = "• Nama Grup : {}".format(str(ginfo.name))
                                 ret_ += "\n• Waktu Ngirim : {}".format(dt_to_str(cTime_to_datetime(msg_dict[msg_id]["createdTime"])))
-                                ry = str(Aditmadzs.displayName)
+                                ry = str(ali.displayName)
                                 pesan = ''
                                 pesan2 = pesan+"@x \n"
                                 xlen = str(len(zxc)+len(xpesan))
                                 xlen2 = str(len(zxc)+len(pesan2)+len(xpesan)-1)
-                                zx = {'S':xlen, 'E':xlen2, 'M':Aditmadzs.mid}
+                                zx = {'S':xlen, 'E':xlen2, 'M':ali.mid}
                                 zx2.append(zx)
                                 zxc += pesan2
                                 text = xpesan + zxc + ret_ + ""
-                                aditmadzs.sendMessage(at, text, contentMetadata={'MENTION':str('{"MENTIONEES":'+json.dumps(zx2).replace(' ','')+'}')}, contentType=0)
-                                aditmadzs.sendImage(at, msg_dict[msg_id]["data"])
+                                ali.sendMessage(at, text, contentMetadata={'MENTION':str('{"MENTIONEES":'+json.dumps(zx2).replace(' ','')+'}')}, contentType=0)
+                                ali.sendImage(at, msg_dict[msg_id]["data"])
                            else:
-                                ginfo = aditmadzs.getGroup(at)
-                                Aditmadzs = aditmadzs.getContact(msg_dict[msg_id]["from"])
+                                ginfo = ali.getGroup(at)
+                                ali = ali.getContact(msg_dict[msg_id]["from"])
                                 ret_ =  "「 Pesan Dihapus 」\n"
-                                ret_ += "• Pengirim : {}".format(str(Aditmadzs.displayName))
+                                ret_ += "• Pengirim : {}".format(str(ali.displayName))
                                 ret_ += "\n• Nama Grup : {}".format(str(ginfo.name))
                                 ret_ += "\n• Waktu Ngirim : {}".format(dt_to_str(cTime_to_datetime(msg_dict[msg_id]["createdTime"])))
                                 ret_ += "\n• Pesannya : {}".format(str(msg_dict[msg_id]["text"]))
-                                aditmadzs.sendMessage(at, str(ret_))
+                                ali.sendMessage(at, str(ret_))
                         del msg_dict[msg_id]
                 except Exception as e:
                     print(e)
@@ -1175,15 +1175,15 @@ def bot(op):
                     msg_id = op.param2
                     if msg_id in msg_dict1:
                         if msg_dict1[msg_id]["from"]:
-                                ginfo = aditmadzs.getGroup(at)
-                                Aditmadzs = aditmadzs.getContact(msg_dict1[msg_id]["from"])
+                                ginfo = ali.getGroup(at)
+                                ali = ali.getContact(msg_dict1[msg_id]["from"])
                                 ret_ =  "「 Sticker Dihapus 」\n"
-                                ret_ += "• Pengirim : {}".format(str(Aditmadzs.displayName))
+                                ret_ += "• Pengirim : {}".format(str(ali.displayName))
                                 ret_ += "\n• Nama Grup : {}".format(str(ginfo.name))
                                 ret_ += "\n• Waktu Ngirim : {}".format(dt_to_str(cTime_to_datetime(msg_dict1[msg_id]["createdTime"])))
                                 ret_ += "{}".format(str(msg_dict1[msg_id]["text"]))
-                                aditmadzs.sendMessage(at, str(ret_))
-                                aditmadzs.sendImage(at, msg_dict1[msg_id]["data"])
+                                ali.sendMessage(at, str(ret_))
+                                ali.sendImage(at, msg_dict1[msg_id]["data"])
                         del msg_dict1[msg_id]
                 except Exception as e:
                     print(e)
@@ -1260,7 +1260,7 @@ def bot(op):
                 msg_dict[msg.id] = {"text":msg.text,"from":msg._from,"createdTime":msg.createdTime}
                 
             if msg.contentType == 1:
-                    path = aditmadzs.downloadObjectMsg(msg_id)
+                    path = ali.downloadObjectMsg(msg_id)
                     msg_dict[msg.id] = {"text":'Gambarnya dibawah',"data":path,"from":msg._from,"createdTime":msg.createdTime}
             if msg.contentType == 7:
                    stk_id = msg.contentMetadata["STKID"]
@@ -1274,7 +1274,7 @@ def bot(op):
                    query = int(stk_id)
                    if type(query) == int:
                             data = 'https://stickershop.line-scdn.net/stickershop/v1/sticker/'+str(query)+'/ANDROID/sticker.png'
-                            path = aditmadzs.downloadFileURL(data)
+                            path = ali.downloadFileURL(data)
                             msg_dict1[msg.id] = {"text":str(ret_),"data":path,"from":msg._from,"createdTime":msg.createdTime}
                             
             if msg.toType == 0 or msg.toType == 2:
@@ -1285,134 +1285,134 @@ def bot(op):
                if msg.contentType == 7:
                  if wait["sticker"] == True:
                     msg.contentType = 0
-                    aditmadzs.sendMessage(msg.to,"STKID : " + msg.contentMetadata["STKID"] + "\nSTKPKGID : " + msg.contentMetadata["STKPKGID"] + "\nSTKVER : " + msg.contentMetadata["STKVER"]+ "\n\n「Link Sticker」" + "\nline://shop/detail/" + msg.contentMetadata["STKPKGID"])
+                    ali.sendMessage(msg.to,"STKID : " + msg.contentMetadata["STKID"] + "\nSTKPKGID : " + msg.contentMetadata["STKPKGID"] + "\nSTKVER : " + msg.contentMetadata["STKVER"]+ "\n\n「Link Sticker」" + "\nline://shop/detail/" + msg.contentMetadata["STKPKGID"])
                if msg.contentType == 13:
                  if wait["contact"] == True:
                     msg.contentType = 0
-                    aditmadzs.sendMessage(msg.to,msg.contentMetadata["mid"])
+                    ali.sendMessage(msg.to,msg.contentMetadata["mid"])
                     if 'displayName' in msg.contentMetadata:
-                        contact = aditmadzs.getContact(msg.contentMetadata["mid"])
-                        path = aditmadzs.getContact(msg.contentMetadata["mid"]).picturePath
+                        contact = ali.getContact(msg.contentMetadata["mid"])
+                        path = ali.getContact(msg.contentMetadata["mid"]).picturePath
                         image = 'http://dl.profile.line.naver.jp'+path
-                        aditmadzs.sendMessage(msg.to,"»» Nama : " + msg.contentMetadata["displayName"] + "\n»» MID : " + msg.contentMetadata["mid"] + "\n»» Status Msg : " + contact.statusMessage + "\n»» Picture URL : http://dl.profile.line-cdn.net/" + contact.pictureStatus)
-                        aditmadzs.sendImageWithURL(msg.to, image)
+                        ali.sendMessage(msg.to,"»» Nama : " + msg.contentMetadata["displayName"] + "\n»» MID : " + msg.contentMetadata["mid"] + "\n»» Status Msg : " + contact.statusMessage + "\n»» Picture URL : http://dl.profile.line-cdn.net/" + contact.pictureStatus)
+                        ali.sendImageWithURL(msg.to, image)
 #ADD Bots
                if msg.contentType == 13:
                  if msg._from in admin:
                   if wait["addbots"] == True:
                     if msg.contentMetadata["mid"] in Bots:
-                        aditmadzs.sendMessage(msg.to,"Contact itu sudah jadi anggota bot")
+                        ali.sendMessage(msg.to,"Contact itu sudah jadi anggota bot")
                         wait["addbots"] = True
                     else:
                         Bots.append(msg.contentMetadata["mid"])
                         wait["addbots"] = True
-                        aditmadzs.sendMessage(msg.to,"Berhasil menambahkan ke anggota bot")
+                        ali.sendMessage(msg.to,"Berhasil menambahkan ke anggota bot")
                  if wait["dellbots"] == True:
                     if msg.contentMetadata["mid"] in Bots:
                         Bots.remove(msg.contentMetadata["mid"])
-                        aditmadzs.sendMessage(msg.to,"Berhasil menghapus dari anggota bot")
+                        ali.sendMessage(msg.to,"Berhasil menghapus dari anggota bot")
                     else:
                         wait["dellbots"] = True
-                        aditmadzs.sendMessage(msg.to,"Contact itu bukan anggota bot Aditmadzs")
+                        ali.sendMessage(msg.to,"Contact itu bukan anggota bot ali")
 #ADD STAFF
                  if msg._from in admin:
                   if wait["addstaff"] == True:
                     if msg.contentMetadata["mid"] in staff:
-                        aditmadzs.sendMessage(msg.to,"Contact itu sudah jadi staff")
+                        ali.sendMessage(msg.to,"Contact itu sudah jadi staff")
                         wait["addstaff"] = True
                     else:
                         staff.append(msg.contentMetadata["mid"])
                         wait["addstaff"] = True
-                        aditmadzs.sendMessage(msg.to,"Berhasil menambahkan ke staff")
+                        ali.sendMessage(msg.to,"Berhasil menambahkan ke staff")
                  if wait["dellstaff"] == True:
                     if msg.contentMetadata["mid"] in staff:
                         staff.remove(msg.contentMetadata["mid"])
-                        aditmadzs.sendMessage(msg.to,"Berhasil menghapus dari staff")
+                        ali.sendMessage(msg.to,"Berhasil menghapus dari staff")
                         wait["dellstaff"] = True
                     else:
                         wait["dellstaff"] = True
-                        aditmadzs.sendMessage(msg.to,"Contact itu bukan staff")
+                        ali.sendMessage(msg.to,"Contact itu bukan staff")
 #ADD ADMIN
                  if msg._from in admin:
                   if wait["addadmin"] == True:
                     if msg.contentMetadata["mid"] in admin:
-                        aditmadzs.sendMessage(msg.to,"Contact itu sudah jadi admin")
+                        ali.sendMessage(msg.to,"Contact itu sudah jadi admin")
                         wait["addadmin"] = True
                     else:
                         admin.append(msg.contentMetadata["mid"])
                         wait["addadmin"] = True
-                        aditmadzs.sendMessage(msg.to,"Berhasil menambahkan ke admin")
+                        ali.sendMessage(msg.to,"Berhasil menambahkan ke admin")
                  if wait["delladmin"] == True:
                     if msg.contentMetadata["mid"] in admin:
                         admin.remove(msg.contentMetadata["mid"])
-                        aditmadzs.sendMessage(msg.to,"Berhasil menghapus dari admin")
+                        ali.sendMessage(msg.to,"Berhasil menghapus dari admin")
                     else:
                         wait["delladmin"] = True
-                        aditmadzs.sendMessage(msg.to,"Contact itu bukan admin")
+                        ali.sendMessage(msg.to,"Contact itu bukan admin")
 #ADD BLACKLIST
                  if msg._from in admin:
                   if wait["wblacklist"] == True:
                     if msg.contentMetadata["mid"] in wait["blacklist"]:
-                        aditmadzs.sendMessage(msg.to,"Contact itu sudah ada di blacklist")
+                        ali.sendMessage(msg.to,"Contact itu sudah ada di blacklist")
                         wait["wblacklist"] = True
                     else:
                         wait["blacklist"][msg.contentMetadata["mid"]] = True
                         wait["wblacklist"] = True
-                        aditmadzs.sendMessage(msg.to,"Berhasil menambahkan ke blacklist user")
+                        ali.sendMessage(msg.to,"Berhasil menambahkan ke blacklist user")
                   if wait["dblacklist"] == True:
                     if msg.contentMetadata["mid"] in wait["blacklist"]:
                         del wait["blacklist"][msg.contentMetadata["mid"]]
-                        aditmadzs.sendMessage(msg.to,"Berhasil menghapus dari blacklist user")
+                        ali.sendMessage(msg.to,"Berhasil menghapus dari blacklist user")
                     else:
                         wait["dblacklist"] = True
-                        aditmadzs.sendMessage(msg.to,"Contact itu tidak ada di blacklist")
+                        ali.sendMessage(msg.to,"Contact itu tidak ada di blacklist")
 #UPDATE FOTO
                if msg.contentType == 1:
                  if msg._from in admin:
                     if Setmain["Addimage"] == True:
                         msgid = msg.id
                         fotoo = "https://obs.line-apps.com/talk/m/download.nhn?oid="+msgid
-                        headers = aditmadzs.Talk.Headers
+                        headers = ali.Talk.Headers
                         r = requests.get(fotoo, headers=headers, stream=True)
                         if r.status_code == 200:
                             path = os.path.join(os.path.dirname(__file__), 'dataPhotos/%s.jpg' % Setmain["Img"])
                             with open(path, 'wb') as fp:
                                 shutil.copyfileobj(r.raw, fp)
-                            aditmadzs.sendMessage(msg.to, "Berhasil menambahkan gambar")
+                            ali.sendMessage(msg.to, "Berhasil menambahkan gambar")
                         Setmain["Img"] = {}
                         Setmain["Addimage"] = False
 
                if msg.toType == 2:
                  if msg._from in admin:
                    if settings["groupPicture"] == True:
-                     path = aditmadzs.downloadObjectMsg(msg_id)
+                     path = ali.downloadObjectMsg(msg_id)
                      settings["groupPicture"] = False
-                     aditmadzs.updateGroupPicture(msg.to, path)
-                     aditmadzs.sendMessage(msg.to, "Berhasil mengubah foto group")
+                     ali.updateGroupPicture(msg.to, path)
+                     ali.sendMessage(msg.to, "Berhasil mengubah foto group")
 
                if msg.contentType == 1:
                    if msg._from in admin:
-                       if mid in Setmain["ADITMADZSfoto"]:
-                            path = aditmadzs.downloadObjectMsg(msg_id)
-                            del Setmain["ADITMADZSfoto"][mid]
-                            aditmadzs.updateProfilePicture(path)
-                            aditmadzs.sendMessage(msg.to,"Foto berhasil dirubah")
+                       if mid in Setmain["alifoto"]:
+                            path = ali.downloadObjectMsg(msg_id)
+                            del Setmain["alifoto"][mid]
+                            ali.updateProfilePicture(path)
+                            ali.sendMessage(msg.to,"Foto berhasil dirubah")
 
                if msg.contentType == 1:
                  if msg._from in admin:
-                        if Amid in Setmain["ADITMADZSfoto"]:
+                        if Amid in Setmain["alifoto"]:
                             path = ki.downloadObjectMsg(msg_id)
-                            del Setmain["ADITMADZSfoto"][Amid]
+                            del Setmain["alifoto"][Amid]
                             ki.updateProfilePicture(path)
                             ki.sendMessage(msg.to,"Foto berhasil dirubah")
-                        elif Bmid in Setmain["ADITMADZSfoto"]:
+                        elif Bmid in Setmain["alifoto"]:
                             path = kk.downloadObjectMsg(msg_id)
-                            del Setmain["ADITMADZSfoto"][Bmid]
+                            del Setmain["alifoto"][Bmid]
                             kk.updateProfilePicture(path)
                             kk.sendMessage(msg.to,"Foto berhasil dirubah")
-                        elif Cmid in Setmain["ADITMADZSfoto"]:
+                        elif Cmid in Setmain["alifoto"]:
                             path = kc.downloadObjectMsg(msg_id)
-                            del Setmain["ADITMADZSfoto"][Cmid]
+                            del Setmain["alifoto"][Cmid]
                             kc.updateProfilePicture(path)
                             kc.sendMessage(msg.to,"Foto berhasil dirubah")
 
@@ -1432,7 +1432,7 @@ def bot(op):
 
                if msg.contentType == 0:
                     if Setmain["autoRead"] == True:
-                        aditmadzs.sendChatChecked(msg.to, msg_id)
+                        ali.sendChatChecked(msg.to, msg_id)
                     if text is None:
                         return
                     else:
@@ -1441,23 +1441,23 @@ def bot(op):
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                helpMessage = help()
-                               aditmadzs.sendMessage(msg.to, str(helpMessage))
+                               ali.sendMessage(msg.to, str(helpMessage))
                                                                                        
                         if cmd == "self on":
                             if msg._from in admin:
                                 wait["selfbot"] = True
-                                aditmadzs.sendMessage(msg.to, "Selfbot diaktifkan")
+                                ali.sendMessage(msg.to, "Selfbot diaktifkan")
                                 
                         elif cmd == "self off":
                             if msg._from in admin:
                                 wait["selfbot"] = False
-                                aditmadzs.sendMessage(msg.to, "Selfbot dinonaktifkan")
+                                ali.sendMessage(msg.to, "Selfbot dinonaktifkan")
                                             
                         elif cmd == "help creator":
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                helpMessage1 = helpcreator()
-                               ma = aditmadzs.getProfile()
+                               ma = ali.getProfile()
                                name = "Help Creator Message"
                                url = 'https://line.me/ti/p/~adit_cmct'
                                iconlink = 'http://dl.profile.line-cdn.net/{}'.format(str(ma.pictureStatus))
@@ -1467,7 +1467,7 @@ def bot(op):
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                helpMessage4 = helpadmin()
-                               ma = aditmadzs.getProfile()
+                               ma = ali.getProfile()
                                name = "Help Admin Message"
                                url = 'https://line.me/ti/p/~adit_cmct'
                                iconlink = 'http://dl.profile.line-cdn.net/{}'.format(str(ma.pictureStatus))
@@ -1477,7 +1477,7 @@ def bot(op):
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                helpMessage5 = helpsetting()
-                               ma = aditmadzs.getProfile()
+                               ma = ali.getProfile()
                                name = "Help Settings Message"
                                url = 'https://line.me/ti/p/~adit_cmct'
                                iconlink = 'http://dl.profile.line-cdn.net/{}'.format(str(ma.pictureStatus))
@@ -1487,7 +1487,7 @@ def bot(op):
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                helpMessage6 = helpprotect()
-                               ma = aditmadzs.getProfile()
+                               ma = ali.getProfile()
                                name = "Help Protect Message"
                                url = 'https://line.me/ti/p/~adit_cmct'
                                iconlink = 'http://dl.profile.line-cdn.net/{}'.format(str(ma.pictureStatus))
@@ -1497,7 +1497,7 @@ def bot(op):
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                helpMessage8 = helpbot()
-                               ma = aditmadzs.getProfile()
+                               ma = ali.getProfile()
                                name = "Help Bot Message"
                                url = 'https://line.me/ti/p/~adit_cmct'
                                iconlink = 'http://dl.profile.line-cdn.net/{}'.format(str(ma.pictureStatus))
@@ -1507,7 +1507,7 @@ def bot(op):
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                helpMessage3 = helpblacklist()
-                               ma = aditmadzs.getProfile()
+                               ma = ali.getProfile()
                                name = "Help Bot Message"
                                url = 'https://line.me/ti/p/~adit_cmct'
                                iconlink = 'http://dl.profile.line-cdn.net/{}'.format(str(ma.pictureStatus))
@@ -1516,12 +1516,12 @@ def bot(op):
                         if cmd == "unsend on":
                             if msg._from in admin:
                                 wait["unsend"] = True
-                                aditmadzs.sendMessage(msg.to, "Deteksi Unsend Diaktifkan")
+                                ali.sendMessage(msg.to, "Deteksi Unsend Diaktifkan")
                                 
                         if cmd == "unsend off":
                             if msg._from in admin:
                                 wait["unsend"] = False
-                                aditmadzs.sendMessage(msg.to, "Deteksi Unsend Dinonaktifkan")                                
+                                ali.sendMessage(msg.to, "Deteksi Unsend Dinonaktifkan")                                
 
                         elif cmd == "status":
                           if wait["selfbot"] == True:
@@ -1555,70 +1555,70 @@ def bot(op):
                                 else: md+="║»» ❌ Protectcancel「OFF」\n"
                                 if msg.to in protectinvite: md+="║»» ✔️ Protectinvite「ON」\n"
                                 else: md+="║»» ❌ Protectinvite「OFF」\n"                                
-                                aditmadzs.sendMessage(msg.to, md+"║»»════════════════════════\n║»» Tanggal : "+ datetime.strftime(timeNow,'%Y-%m-%d')+"\n║»» Jam [ "+ datetime.strftime(timeNow,'%H:%M:%S')+" ]\n  ╰═════════════════════════")
+                                ali.sendMessage(msg.to, md+"║»»════════════════════════\n║»» Tanggal : "+ datetime.strftime(timeNow,'%Y-%m-%d')+"\n║»» Jam [ "+ datetime.strftime(timeNow,'%H:%M:%S')+" ]\n  ╰═════════════════════════")
 
                         elif cmd == "creator" or text.lower() == 'creator':
                             if msg._from in admin:
-                                aditmadzs.sendMessage(msg.to,"Creator Bot") 
+                                ali.sendMessage(msg.to,"Creator Bot") 
                                 ma = ""
                                 for i in creator:
-                                    ma = aditmadzs.getContact(i)
-                                    aditmadzs.sendMessage(msg.to, None, contentMetadata={'mid': i}, contentType=13)
+                                    ma = ali.getContact(i)
+                                    ali.sendMessage(msg.to, None, contentMetadata={'mid': i}, contentType=13)
 
                         elif cmd == "about" or cmd == "About":
                           if wait["selfbot"] == True:
                             if msg._from in admin:
-                               sendMention(msg.to, sender, "「 Aditmadzs BOT 」\n")
-                               aditmadzs.sendMessage(msg.to, None, contentMetadata={'mid': mid}, contentType=13)
+                               sendMention(msg.to, sender, "「 ali BOT 」\n")
+                               ali.sendMessage(msg.to, None, contentMetadata={'mid': mid}, contentType=13)
 
                         elif cmd == "me" or text.lower() == 'mek':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                msg.contentType = 13
                                msg.contentMetadata = {'mid': msg._from}
-                               aditmadzs.sendMessage1(msg)
+                               ali.sendMessage1(msg)
 
                         elif text.lower() == "mymid":
                             if msg._from in admin:
-                               aditmadzs.sendMessage(msg.to, msg._from)
+                               ali.sendMessage(msg.to, msg._from)
 
                         elif ("Mid " in msg.text):
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                key = eval(msg.contentMetadata["MENTION"])
                                key1 = key["MENTIONEES"][0]["M"]
-                               mi = aditmadzs.getContact(key1)
-                               aditmadzs.sendMessage(msg.to, "Nama : "+str(mi.displayName)+"\nMID : " +key1)
-                               aditmadzs.sendMessage(msg.to, None, contentMetadata={'mid': key1}, contentType=13)
+                               mi = ali.getContact(key1)
+                               ali.sendMessage(msg.to, "Nama : "+str(mi.displayName)+"\nMID : " +key1)
+                               ali.sendMessage(msg.to, None, contentMetadata={'mid': key1}, contentType=13)
 
                         elif ("Info " in msg.text):
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                key = eval(msg.contentMetadata["MENTION"])
                                key1 = key["MENTIONEES"][0]["M"]
-                               mi = aditmadzs.getContact(key1)
-                               aditmadzs.sendMessage(msg.to, "»» Nama : "+str(mi.displayName)+"\n»» Mid : " +key1+"\n»» Status Message"+str(mi.statusMessage))
-                               aditmadzs.sendMessage(msg.to, None, contentMetadata={'mid': key1}, contentType=13)
-                               if "videoProfile='{" in str(aditmadzs.getContact(key1)):
-                                   aditmadzs.sendVideoWithURL(msg.to, 'http://dl.profile.line.naver.jp'+str(mi.picturePath)+'/vp.small')
+                               mi = ali.getContact(key1)
+                               ali.sendMessage(msg.to, "»» Nama : "+str(mi.displayName)+"\n»» Mid : " +key1+"\n»» Status Message"+str(mi.statusMessage))
+                               ali.sendMessage(msg.to, None, contentMetadata={'mid': key1}, contentType=13)
+                               if "videoProfile='{" in str(ali.getContact(key1)):
+                                   ali.sendVideoWithURL(msg.to, 'http://dl.profile.line.naver.jp'+str(mi.picturePath)+'/vp.small')
                                else:
-                                   aditmadzs.sendImageWithURL(msg.to, 'http://dl.profile.line.naver.jp'+str(mi.picturePath))
+                                   ali.sendImageWithURL(msg.to, 'http://dl.profile.line.naver.jp'+str(mi.picturePath))
 
                         elif cmd == "mybot":
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                msg.contentType = 13
                                msg.contentMetadata = {'mid': mid}
-                               aditmadzs.sendMessage1(msg)
+                               ali.sendMessage1(msg)
                                msg.contentType = 13
                                msg.contentMetadata = {'mid': Amid}
-                               aditmadzs.sendMessage1(msg)
+                               ali.sendMessage1(msg)
                                msg.contentType = 13
                                msg.contentMetadata = {'mid': Bmid}
-                               aditmadzs.sendMessage1(msg)
+                               ali.sendMessage1(msg)
                                msg.contentType = 13
                                msg.contentMetadata = {'mid': Cmid}
-                               aditmadzs.sendMessage1(msg)
+                               ali.sendMessage1(msg)
 
                         elif text.lower() == "remove chat":
                           if wait["selfbot"] == True:
@@ -1627,7 +1627,7 @@ def bot(op):
                                    ki.removeAllMessages(op.param2)
                                    kk.removeAllMessages(op.param2)
                                    kc.removeAllMessages(op.param2)
-                                   aditmadzs.sendMessage(msg.to,"Chat dibersihkan...")
+                                   ali.sendMessage(msg.to,"Chat dibersihkan...")
                                except:
                                    pass
 
@@ -1642,8 +1642,8 @@ def bot(op):
                                       if mention["M"] not in lists:
                                           lists.append(mention["M"])
                                   for ls in lists:
-                                      contact = aditmadzs.getContact(ls)
-                                      aditmadzs.sendMessage(msg.to, "[ Display Name ]\n" + contact.displayName)
+                                      contact = ali.getContact(ls)
+                                      ali.sendMessage(msg.to, "[ Display Name ]\n" + contact.displayName)
                             
                         elif cmd.startswith("stealbio "):
                             if msg._from in admin:
@@ -1656,8 +1656,8 @@ def bot(op):
                                       if mention["M"] not in lists:
                                           lists.append(mention["M"])
                                   for ls in lists:
-                                      contact = aditmadzs.getContact(ls)
-                                      aditmadzs.sendMessage(msg.to, "[ Status Message ]\n{}" + contact.statusMessage)
+                                      contact = ali.getContact(ls)
+                                      ali.sendMessage(msg.to, "[ Status Message ]\n{}" + contact.statusMessage)
                             
                         elif cmd.startswith("stealpicture "):
                             if msg._from in admin:
@@ -1670,8 +1670,8 @@ def bot(op):
                                         if mention["M"] not in lists:
                                             lists.append(mention["M"])
                                     for ls in lists:
-                                        path = "http://dl.profile.line-cdn.net/" + aditmadzs.getContact(ls).pictureStatus
-                                        aditmadzs.sendImageWithURL(msg.to, str(path))
+                                        path = "http://dl.profile.line-cdn.net/" + ali.getContact(ls).pictureStatus
+                                        ali.sendImageWithURL(msg.to, str(path))
                             
                         elif cmd.startswith("stealcover "):
                             if msg._from in admin:
@@ -1685,8 +1685,8 @@ def bot(op):
                                             if mention["M"] not in lists:
                                                 lists.append(mention["M"])
                                         for ls in lists:
-                                            path = aditmadzs.getProfileCoverURL(ls)
-                                            aditmadzs.sendImageWithURL(msg.to, str(path))
+                                            path = ali.getProfileCoverURL(ls)
+                                            ali.sendImageWithURL(msg.to, str(path))
                         elif cmd.startswith("stealvideoprofile "):
                             if msg._from in admin:
                                     targets = []
@@ -1696,9 +1696,9 @@ def bot(op):
                                         targets.append(x["M"])
                                     for target in targets:
                                         try:
-                                            contact = aditmadzs.getContact(target)
+                                            contact = ali.getContact(target)
                                             path = "http://dl.profile.line.naver.jp"+contact.picturePath+"/vp"
-                                            aditmadzs.sendVideoWithURL(msg.to, path)
+                                            ali.sendVideoWithURL(msg.to, path)
                                         except Exception as e:
                                             pass                                            
 
@@ -1707,14 +1707,14 @@ def bot(op):
                             if msg._from in admin:
                                sep = text.split(" ")
                                pesan = text.replace(sep[0] + " ","")
-                               saya = aditmadzs.getGroupIdsJoined()
+                               saya = ali.getGroupIdsJoined()
                                for group in saya:
-                                   aditmadzs.sendMessage(group,"[ Broadcast ]\n" + str(pesan))
+                                   ali.sendMessage(group,"[ Broadcast ]\n" + str(pesan))
 
                         elif text.lower() == "mykey":
                           if wait["selfbot"] == True:
                             if msg._from in admin:
-                               aditmadzs.sendMessage(msg.to, "「Mykey」\nSetkey bot mu「 " + str(Setmain["keyCommand"]) + " 」")
+                               ali.sendMessage(msg.to, "「Mykey」\nSetkey bot mu「 " + str(Setmain["keyCommand"]) + " 」")
                                
                         elif cmd.startswith("setkey "):
                           if wait["selfbot"] == True:
@@ -1722,21 +1722,21 @@ def bot(op):
                                sep = text.split(" ")
                                key = text.replace(sep[0] + " ","")
                                if key in [""," ","\n",None]:
-                                   aditmadzs.sendMessage(msg.to, "Gagal mengganti key")
+                                   ali.sendMessage(msg.to, "Gagal mengganti key")
                                else:
                                    Setmain["keyCommand"] = str(key).lower()
-                                   aditmadzs.sendMessage(msg.to, "「Setkey」\nSetkey diganti jadi「{}」".format(str(key).lower()))
+                                   ali.sendMessage(msg.to, "「Setkey」\nSetkey diganti jadi「{}」".format(str(key).lower()))
 
                         elif text.lower() == "resetkey":
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                Setmain["keyCommand"] = ""
-                               aditmadzs.sendMessage(msg.to, "「Setkey」\nSetkey mu kembali ke awal")
+                               ali.sendMessage(msg.to, "「Setkey」\nSetkey mu kembali ke awal")
 
                         elif cmd == "restart":
                           if wait["selfbot"] == True:
                             if msg._from in creator:
-                               aditmadzs.sendMessage(msg.to, "Restart Sukses Bos!...")
+                               ali.sendMessage(msg.to, "Restart Sukses Bos!...")
                                Setmain["restartPoint"] = msg.to
                                restartBot()
                             
@@ -1744,7 +1744,7 @@ def bot(op):
                           if wait["selfbot"] == True:
                                eltime = time.time() - mulai
                                bot = "Aktif " +waktu(eltime)
-                               contact = aditmadzs.getProfile()
+                               contact = ali.getProfile()
                                mids = [contact.mid]
                                name = "{}".format(str(contact.displayName))
                                url = 'https://line.me/ti/p/~adit_cmct'
@@ -1755,7 +1755,7 @@ def bot(op):
                         elif cmd == "ginfo":
                           if msg._from in admin:
                             try:
-                                G = aditmadzs.getGroup(msg.to)
+                                G = ali.getGroup(msg.to)
                                 if G.invitee is None:
                                     gPending = "0"
                                 else:
@@ -1765,24 +1765,24 @@ def bot(op):
                                     gTicket = "Tidak ada"
                                 else:
                                     gQr = "Terbuka"
-                                    gTicket = "https://line.me/R/ti/g/{}".format(str(aditmadzs.reissueGroupTicket(G.id)))
+                                    gTicket = "https://line.me/R/ti/g/{}".format(str(ali.reissueGroupTicket(G.id)))
                                 timeCreated = []
                                 timeCreated.append(time.strftime("%d-%m-%Y [ %H:%M:%S ]", time.localtime(int(G.createdTime) / 1000)))
-                                aditmadzs.sendMessage(msg.to, "║»» BOT Grup Info\n\n ║»» Nama Group : {}".format(G.name)+ "\n»» ID Group : {}".format(G.id)+ "\n»» Pembuat : {}".format(G.creator.displayName)+ "\n»» Waktu Dibuat : {}".format(str(timeCreated))+ "\n»» Jumlah Member : {}".format(str(len(G.members)))+ "\n»» Jumlah Pending : {}".format(gPending)+ "\n»» Group Qr : {}".format(gQr)+ "\n»» Group Ticket : {}".format(gTicket))
-                                aditmadzs.sendMessage(msg.to, None, contentMetadata={'mid': G.creator.mid}, contentType=13)
-                                aditmadzs.sendImageWithURL(msg.to, 'http://dl.profile.line-cdn.net/'+G.pictureStatus)
+                                ali.sendMessage(msg.to, "║»» BOT Grup Info\n\n ║»» Nama Group : {}".format(G.name)+ "\n»» ID Group : {}".format(G.id)+ "\n»» Pembuat : {}".format(G.creator.displayName)+ "\n»» Waktu Dibuat : {}".format(str(timeCreated))+ "\n»» Jumlah Member : {}".format(str(len(G.members)))+ "\n»» Jumlah Pending : {}".format(gPending)+ "\n»» Group Qr : {}".format(gQr)+ "\n»» Group Ticket : {}".format(gTicket))
+                                ali.sendMessage(msg.to, None, contentMetadata={'mid': G.creator.mid}, contentType=13)
+                                ali.sendImageWithURL(msg.to, 'http://dl.profile.line-cdn.net/'+G.pictureStatus)
                             except Exception as e:
-                                aditmadzs.sendMessage(msg.to, str(e))
+                                ali.sendMessage(msg.to, str(e))
 
                         elif cmd.startswith("infogrup "):
                           if msg._from in admin:
                             separate = text.split(" ")
                             number = text.replace(separate[0] + " ","")
-                            groups = aditmadzs.getGroupIdsJoined()
+                            groups = ali.getGroupIdsJoined()
                             ret_ = ""
                             try:
                                 group = groups[int(number)-1]
-                                G = aditmadzs.getGroup(group)
+                                G = ali.getGroup(group)
                                 try:
                                     gCreator = G.creator.displayName
                                 except:
@@ -1796,7 +1796,7 @@ def bot(op):
                                     gTicket = "Tidak ada"
                                 else:
                                     gQr = "Terbuka"
-                                    gTicket = "https://line.me/R/ti/g/{}".format(str(aditmadzs.reissueGroupTicket(G.id)))
+                                    gTicket = "https://line.me/R/ti/g/{}".format(str(ali.reissueGroupTicket(G.id)))
                                 timeCreated = []
                                 timeCreated.append(time.strftime("%d-%m-%Y [ %H:%M:%S ]", time.localtime(int(G.createdTime) / 1000)))
                                 ret_ += "║»» BOT Grup Info\n"
@@ -1809,7 +1809,7 @@ def bot(op):
                                 ret_ += "\n║»» Group Qr : {}".format(gQr)
                                 ret_ += "\n║»» Group Ticket : {}".format(gTicket)
                                 ret_ += ""
-                                aditmadzs.sendMessage(to, str(ret_))
+                                ali.sendMessage(to, str(ret_))
                             except:
                                 pass
 
@@ -1818,13 +1818,13 @@ def bot(op):
                             if msg._from in admin:
                                ma = ""
                                a = 0
-                               gid = aditmadzs.getGroupIdsJoined()
+                               gid = ali.getGroupIdsJoined()
                                for i in gid:
-                                   G = aditmadzs.getGroup(i)
+                                   G = ali.getGroup(i)
                                    a = a + 1
                                    end = "\n"
                                    ma += "║»» " + str(a) + ". " +G.name+ "\n"
-                               aditmadzs.sendMessage(msg.to,"╭════════[ GROUP LIST ]\n║»»\n"+ma+"║»»\n  ╰═══════[ Total「"+str(len(gid))+"」Groups ]")
+                               ali.sendMessage(msg.to,"╭════════[ GROUP LIST ]\n║»»\n"+ma+"║»»\n  ╰═══════[ Total「"+str(len(gid))+"」Groups ]")
 
                         elif cmd == "gruplist1":
                             if msg._from in admin:
@@ -1866,51 +1866,51 @@ def bot(op):
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 if msg.toType == 2:
-                                   X = aditmadzs.getGroup(msg.to)
+                                   X = ali.getGroup(msg.to)
                                    X.preventedJoinByTicket = False
-                                   aditmadzs.updateGroup(X)
-                                   aditmadzs.sendMessage(msg.to, "QR telah dibuka")
+                                   ali.updateGroup(X)
+                                   ali.sendMessage(msg.to, "QR telah dibuka")
 
                         elif cmd == "close":
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 if msg.toType == 2:
-                                   X = aditmadzs.getGroup(msg.to)
+                                   X = ali.getGroup(msg.to)
                                    X.preventedJoinByTicket = True
-                                   aditmadzs.updateGroup(X)
-                                   aditmadzs.sendMessage(msg.to, "QR telah ditutup")
+                                   ali.updateGroup(X)
+                                   ali.sendMessage(msg.to, "QR telah ditutup")
 
                         elif cmd == "url grup":
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 if msg.toType == 2:
-                                   x = aditmadzs.getGroup(msg.to)
+                                   x = ali.getGroup(msg.to)
                                    if x.preventedJoinByTicket == True:
                                       x.preventedJoinByTicket = False
-                                      aditmadzs.updateGroup(x)
-                                   gurl = aditmadzs.reissueGroupTicket(msg.to)
-                                   aditmadzs.sendMessage(msg.to, "Nama : "+str(x.name)+ "\nUrl grup : http://line.me/R/ti/g/"+gurl)
+                                      ali.updateGroup(x)
+                                   gurl = ali.reissueGroupTicket(msg.to)
+                                   ali.sendMessage(msg.to, "Nama : "+str(x.name)+ "\nUrl grup : http://line.me/R/ti/g/"+gurl)
 
 #===========BOT UPDATE============#
                         elif cmd == "ditup":
                           if wait["selfbot"] == True:
                             if msg._from in admin:
-                                Setmain["ADITMADZSfoto"][mid] = True
-                                aditmadzs.sendMessage(msg.to,"Kirim fotonya.....")
+                                Setmain["alifoto"][mid] = True
+                                ali.sendMessage(msg.to,"Kirim fotonya.....")
                                 
                         elif cmd == "dit1up":
                             if msg._from in admin:
-                                Setmain["ADITMADZSfoto"][Amid] = True
+                                Setmain["alifoto"][Amid] = True
                                 ki.sendMessage(msg.to,"Kirim fotonya.....")
                                 
                         elif cmd == "dit2up":
                             if msg._from in admin:
-                                Setmain["ADITMADZSfoto"][Bmid] = True
+                                Setmain["alifoto"][Bmid] = True
                                 kk.sendMessage(msg.to,"Kirim fotonya.....")
                                 
                         elif cmd == "dit3up":
                             if msg._from in admin:
-                                Setmain["ADITMADZSfoto"][Cmid] = True
+                                Setmain["alifoto"][Cmid] = True
                                 kc.sendMessage(msg.to,"Kirim fotonya.....")
 
                         elif cmd.startswith("myname: "):
@@ -1918,10 +1918,10 @@ def bot(op):
                             separate = msg.text.split(" ")
                             string = msg.text.replace(separate[0] + " ","")
                             if len(string) <= 10000000000:
-                                profile = aditmadzs.getProfile()
+                                profile = ali.getProfile()
                                 profile.displayName = string
-                                aditmadzs.updateProfile(profile)
-                                aditmadzs.sendMessage(msg.to,"Nama diganti jadi " + string + "")
+                                ali.updateProfile(profile)
+                                ali.sendMessage(msg.to,"Nama diganti jadi " + string + "")
 
                         elif cmd.startswith("dit1name: "):
                           if msg._from in admin:
@@ -1956,7 +1956,7 @@ def bot(op):
 #===========BOT UPDATE============#
                         elif cmd == "tagall" or text.lower() == 'hai':
                           if wait["selfbot"] == True:
-                               group = aditmadzs.getGroup(msg.to)
+                               group = ali.getGroup(msg.to)
                                nama = [contact.mid for contact in group.members]
                                nm1, nm2, nm3, nm4, jml = [], [], [], [], len(nama)
                                if jml <= 20:
@@ -2016,8 +2016,8 @@ def bot(op):
                                 for m_id in Bots:
                                     a = a + 1
                                     end = '\n'
-                                    ma += str(a) + ". " +aditmadzs.getContact(m_id).displayName + "\n"
-                                aditmadzs.sendMessage(msg.to,"»» BOT\n\n"+ma+"\nTotal「%s」BOT" %(str(len(Bots))))
+                                    ma += str(a) + ". " +ali.getContact(m_id).displayName + "\n"
+                                ali.sendMessage(msg.to,"»» BOT\n\n"+ma+"\nTotal「%s」BOT" %(str(len(Bots))))
 
                         elif cmd == "listadmin":
                           if wait["selfbot"] == True:
@@ -2031,16 +2031,16 @@ def bot(op):
                                 for m_id in owner:
                                     a = a + 1
                                     end = '\n'
-                                    ma += str(a) + ". " +aditmadzs.getContact(m_id).displayName + "\n"
+                                    ma += str(a) + ". " +ali.getContact(m_id).displayName + "\n"
                                 for m_id in admin:
                                     b = b + 1
                                     end = '\n'
-                                    mb += str(b) + ". " +aditmadzs.getContact(m_id).displayName + "\n"
+                                    mb += str(b) + ". " +ali.getContact(m_id).displayName + "\n"
                                 for m_id in staff:
                                     c = c + 1
                                     end = '\n'
-                                    mc += str(c) + ". " +aditmadzs.getContact(m_id).displayName + "\n"
-                                aditmadzs.sendMessage(msg.to,"»» BOT admin\n\nSuper admin:\n"+ma+"\nAdmin:\n"+mb+"\nStaff:\n"+mc+"\nTotal「%s」" %(str(len(owner)+len(admin)+len(staff))))
+                                    mc += str(c) + ". " +ali.getContact(m_id).displayName + "\n"
+                                ali.sendMessage(msg.to,"»» BOT admin\n\nSuper admin:\n"+ma+"\nAdmin:\n"+mb+"\nStaff:\n"+mc+"\nTotal「%s」" %(str(len(owner)+len(admin)+len(staff))))
 
                         elif cmd == "listprotect":
                           if wait["selfbot"] == True:
@@ -2059,28 +2059,28 @@ def bot(op):
                                 for group in gid:
                                     a = a + 1
                                     end = '\n'
-                                    ma += str(a) + ". " +aditmadzs.getGroup(group).name + "\n"
+                                    ma += str(a) + ". " +ali.getGroup(group).name + "\n"
                                 gid = protectkick
                                 for group in gid:
                                     b = b + 1
                                     end = '\n'
-                                    mb += str(b) + ". " +aditmadzs.getGroup(group).name + "\n"
+                                    mb += str(b) + ". " +ali.getGroup(group).name + "\n"
                                 gid = protectjoin
                                 for group in gid:
                                     d = d + 1
                                     end = '\n'
-                                    md += str(d) + ". " +aditmadzs.getGroup(group).name + "\n"
+                                    md += str(d) + ". " +ali.getGroup(group).name + "\n"
                                 gid = protectcancel
                                 for group in gid:
                                     c = c + 1
                                     end = '\n'
-                                    mc += str(c) + ". " +aditmadzs.getGroup(group).name + "\n"
+                                    mc += str(c) + ". " +ali.getGroup(group).name + "\n"
                                 gid = protectinvite
                                 for group in gid:
                                     e = e + 1
                                     end = '\n'
-                                    me += str(e) + ". " +aditmadzs.getGroup(group).name + "\n"                                    
-                                aditmadzs.sendMessage(msg.to,"»» Aditmadzs Protect\n\n»» PROTECT URL :\n"+ma+"\n»» PROTECT KICK :\n"+mb+"\n»» PROTECT JOIN :\n"+md+"\n»» PROTECT CANCEL:\n"+mc+"\n»» PROTECT INVITE :\n"+me+"\nTotal「%s」Protect yang aktif" %(str(len(protectqr)+len(protectkick)+len(protectjoin)+len(protectcancel)+len(protectinvite))))
+                                    me += str(e) + ". " +ali.getGroup(group).name + "\n"                                    
+                                ali.sendMessage(msg.to,"»» ali Protect\n\n»» PROTECT URL :\n"+ma+"\n»» PROTECT KICK :\n"+mb+"\n»» PROTECT JOIN :\n"+md+"\n»» PROTECT CANCEL:\n"+mc+"\n»» PROTECT INVITE :\n"+me+"\nTotal「%s」Protect yang aktif" %(str(len(protectqr)+len(protectkick)+len(protectjoin)+len(protectcancel)+len(protectinvite))))
 
                         elif cmd == "respon":
                           if wait["selfbot"] == True:
@@ -2093,12 +2093,12 @@ def bot(op):
                         elif cmd == "join dit":
                           if wait["selfbot"] == True:
                             if msg._from in admin:
-                                G = aditmadzs.getGroup(msg.to)
-                                ginfo = aditmadzs.getGroup(msg.to)
+                                G = ali.getGroup(msg.to)
+                                ginfo = ali.getGroup(msg.to)
                                 G.preventedJoinByTicket = False
-                                aditmadzs.updateGroup(G)
+                                ali.updateGroup(G)
                                 invsend = 0
-                                Ticket = aditmadzs.reissueGroupTicket(msg.to)
+                                Ticket = ali.reissueGroupTicket(msg.to)
                                 ki.acceptGroupInvitationByTicket(msg.to,Ticket)
                                 kk.acceptGroupInvitationByTicket(msg.to,Ticket)
                                 kc.acceptGroupInvitationByTicket(msg.to,Ticket)
@@ -2110,7 +2110,7 @@ def bot(op):
                         elif cmd == "bye dit":
                           if wait["selfbot"] == True:
                             if msg._from in admin:
-                                G = aditmadzs.getGroup(msg.to)
+                                G = ali.getGroup(msg.to)
                                 ki.sendMessage(msg.to, "dadah group "+str(G.name))
                                 ki.leaveGroup(msg.to)
                                 kk.leaveGroup(msg.to)
@@ -2121,51 +2121,51 @@ def bot(op):
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 get_profile_time_start = time.time()
-                                get_profile = aditmadzs.getProfile()
+                                get_profile = ali.getProfile()
                                 get_profile_time = time.time() - get_profile_time_start
                                 get_group_time_start = time.time()
-                                get_group = aditmadzs.getGroupIdsJoined()
+                                get_group = ali.getGroupIdsJoined()
                                 get_group_time = time.time() - get_group_time_start
                                 get_contact_time_start = time.time()
-                                get_contact = aditmadzs.getContact(mid)
+                                get_contact = ali.getContact(mid)
                                 get_contact_time = time.time() - get_contact_time_start
-                                aditmadzs.sendMessage(msg.to, " »» Aditmadzs Speed respon\n\n - Get Profile\n   %.10f\n - Get Contact\n   %.10f\n - Get Group\n   %.10f" % (get_profile_time/3,get_contact_time/3,get_group_time/3))
+                                ali.sendMessage(msg.to, " »» ali Speed respon\n\n - Get Profile\n   %.10f\n - Get Contact\n   %.10f\n - Get Group\n   %.10f" % (get_profile_time/3,get_contact_time/3,get_group_time/3))
 
                         elif cmd == "speed" or cmd == "sp":
                           if wait["selfbot"] == True:
                                start = time.time()
                                print("Speed")
                                elapsed_time = time.time() - start
-                               contact = aditmadzs.getProfile()
+                               contact = ali.getProfile()
                                mids = [contact.mid]
                                name = "{}".format(str(contact.displayName))
                                url = 'https://line.me/ti/p/~adit_cmct'
                                iconlink = 'http://dl.profile.line-cdn.net/{}'.format(str(contact.pictureStatus))
                                text = "Waiting...."
                                sendMentionV10(msg.to, str(text), str(name), str(url), str(iconlink))
-                               aditmadzs.sendMessage(msg.to,format(str(elapsed_time)))
+                               ali.sendMessage(msg.to,format(str(elapsed_time)))
 
                         elif cmd == "cctv on":
                           if wait["selfbot"] == True:
                                  tz = pytz.timezone("Asia/Jakarta")
                                  timeNow = datetime.now(tz=tz)
-                                 Setmain['ADITMADZSreadPoint'][msg.to] = msg_id
-                                 Setmain['ADITMADZSreadMember'][msg.to] = {}
-                                 aditmadzs.sendMessage(msg.to, "Lurking berhasil diaktifkan\n\nTanggal : "+ datetime.strftime(timeNow,'%Y-%m-%d')+"\nJam [ "+ datetime.strftime(timeNow,'%H:%M:%S')+" ]")
+                                 Setmain['alireadPoint'][msg.to] = msg_id
+                                 Setmain['alireadMember'][msg.to] = {}
+                                 ali.sendMessage(msg.to, "Lurking berhasil diaktifkan\n\nTanggal : "+ datetime.strftime(timeNow,'%Y-%m-%d')+"\nJam [ "+ datetime.strftime(timeNow,'%H:%M:%S')+" ]")
                             
                         elif cmd == "cctv off":
                           if wait["selfbot"] == True:
                                  tz = pytz.timezone("Asia/Jakarta")
                                  timeNow = datetime.now(tz=tz)
-                                 del Setmain['ADITMADZSreadPoint'][msg.to]
-                                 del Setmain['ADITMADZSreadMember'][msg.to]
-                                 aditmadzs.sendMessage(msg.to, "CCTV berhasil dinoaktifkan\n\nTanggal : "+ datetime.strftime(timeNow,'%Y-%m-%d')+"\nJam [ "+ datetime.strftime(timeNow,'%H:%M:%S')+" ]")
+                                 del Setmain['alireadPoint'][msg.to]
+                                 del Setmain['alireadMember'][msg.to]
+                                 ali.sendMessage(msg.to, "CCTV berhasil dinoaktifkan\n\nTanggal : "+ datetime.strftime(timeNow,'%Y-%m-%d')+"\nJam [ "+ datetime.strftime(timeNow,'%H:%M:%S')+" ]")
                             
                         elif cmd == "cyduk":
-                            if msg.to in Setmain['ADITMADZSreadPoint']:
-                                if Setmain['ADITMADZSreadMember'][msg.to] != {}:
+                            if msg.to in Setmain['alireadPoint']:
+                                if Setmain['alireadMember'][msg.to] != {}:
                                     aa = []
-                                    for x in Setmain['ADITMADZSreadMember'][msg.to]:
+                                    for x in Setmain['alireadMember'][msg.to]:
                                         aa.append(x)
                                     try:
                                         arrData = ""
@@ -2189,27 +2189,27 @@ def bot(op):
                                                 textx += str(b) + ". "
                                             else:
                                                 try:
-                                                    no = "[ {} ]".format(str(aditmadzs.getGroup(msg.to).name))
+                                                    no = "[ {} ]".format(str(ali.getGroup(msg.to).name))
                                                 except:
                                                     no = "  "
                                         msg.to = msg.to
                                         msg.text = textx+"\nTanggal : "+ datetime.strftime(timeNow,'%Y-%m-%d')+"\nJam [ "+ datetime.strftime(timeNow,'%H:%M:%S')+" ]"
                                         msg.contentMetadata = {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}
                                         msg.contentType = 0
-                                        aditmadzs.sendMessage1(msg)
+                                        ali.sendMessage1(msg)
                                     except:
                                         pass
                                     try:
-                                        del Setmain['ADITMADZSreadPoint'][msg.to]
-                                        del Setmain['ADITMADZSreadMember'][msg.to]
+                                        del Setmain['alireadPoint'][msg.to]
+                                        del Setmain['alireadMember'][msg.to]
                                     except:
                                         pass
-                                    Setmain['ADITMADZSreadPoint'][msg.to] = msg.id
-                                    Setmain['ADITMADZSreadMember'][msg.to] = {}
+                                    Setmain['alireadPoint'][msg.to] = msg.id
+                                    Setmain['alireadMember'][msg.to] = {}
                                 else:
-                                    aditmadzs.sendMessage(msg.to, "User kosong...")
+                                    ali.sendMessage(msg.to, "User kosong...")
                             else:
-                                aditmadzs.sendMessage(msg.to, "Ketik cctv on dulu")
+                                ali.sendMessage(msg.to, "Ketik cctv on dulu")
 
                         elif cmd.startswith("spamtag: "):
                           if wait["selfbot"] == True:
@@ -2217,8 +2217,8 @@ def bot(op):
                                 proses = text.split(":")
                                 strnum = text.replace(proses[0] + ":","")
                                 num =  int(strnum)
-                                Setmain["ADITMADZSlimit"] = num
-                                aditmadzs.sendMessage(msg.to,"Total Spamtag Diubah Menjadi " +strnum)
+                                Setmain["alilimit"] = num
+                                ali.sendMessage(msg.to,"Total Spamtag Diubah Menjadi " +strnum)
 
                         elif cmd.startswith("spamcall: "):
                           if wait["selfbot"] == True:
@@ -2227,7 +2227,7 @@ def bot(op):
                                 strnum = text.replace(proses[0] + ":","")
                                 num =  int(strnum)
                                 wait["limit"] = num
-                                aditmadzs.sendMessage(msg.to,"Total Spamcall Diubah Menjadi " +strnum)
+                                ali.sendMessage(msg.to,"Total Spamcall Diubah Menjadi " +strnum)
 
                         elif cmd.startswith("spamtag "):
                           if wait["selfbot"] == True:
@@ -2248,33 +2248,33 @@ def bot(op):
                                     msg.text = zxc
                                     lol = {'MENTION':str('{"MENTIONEES":'+json.dumps(zx2).replace(' ','')+'}')}
                                     msg.contentMetadata = lol
-                                    jmlh = int(Setmain["ADITMADZSlimit"])
+                                    jmlh = int(Setmain["alilimit"])
                                     if jmlh <= 1000:
                                         for x in range(jmlh):
                                             try:
-                                                aditmadzs.sendMessage1(msg)
+                                                ali.sendMessage1(msg)
                                             except Exception as e:
-                                                aditmadzs.sendMessage(msg.to,str(e))
+                                                ali.sendMessage(msg.to,str(e))
                                     else:
-                                        aditmadzs.sendMessage(msg.to,"KEBANYAKAN GOBLOK!")
+                                        ali.sendMessage(msg.to,"KEBANYAKAN GOBLOK!")
                                         
                         elif cmd == "spamcall":
                           if wait["selfbot"] == True:
                            if msg._from in admin:
                              if msg.toType == 2:
-                                group = aditmadzs.getGroup(to)
+                                group = ali.getGroup(to)
                                 members = [mem.mid for mem in group.members]
                                 jmlh = int(wait["limit"])
-                                aditmadzs.sendMessage(msg.to, "Berhasil mengundang {} undangan Call Grup".format(str(wait["limit"])))
+                                ali.sendMessage(msg.to, "Berhasil mengundang {} undangan Call Grup".format(str(wait["limit"])))
                                 if jmlh <= 1000:
                                   for x in range(jmlh):
                                      try:
                                         call.acquireGroupCallRoute(to)
                                         call.inviteIntoGroupCall(to, contactIds=members)
                                      except Exception as e:
-                                        aditmadzs.sendMessage(msg.to,str(e))
+                                        ali.sendMessage(msg.to,str(e))
                                 else:
-                                    aditmadzs.sendMessage(msg.to,"KEBANYAKAN BANGSAT!")
+                                    ali.sendMessage(msg.to,"KEBANYAKAN BANGSAT!")
 
                         elif 'Gift: ' in msg.text:
                           if wait["selfbot"] == True:
@@ -2285,7 +2285,7 @@ def bot(op):
                               jumlah = int(korban2[1])
                               if jumlah <= 1000:
                                   for var in range(0,jumlah):
-                                      aditmadzs.sendMessage(midd, None, contentMetadata={'PRDID': 'a0768339-c2d3-4189-9653-2909e9bb6f58', 'PRDTYPE': 'THEME', 'MSGTPL': '6'}, contentType=9)
+                                      ali.sendMessage(midd, None, contentMetadata={'PRDID': 'a0768339-c2d3-4189-9653-2909e9bb6f58', 'PRDTYPE': 'THEME', 'MSGTPL': '6'}, contentType=9)
                                       ki.sendMessage(midd, None, contentMetadata={'PRDID': 'a0768339-c2d3-4189-9653-2909e9bb6f58', 'PRDTYPE': 'THEME', 'MSGTPL': '6'}, contentType=9)
                                       kk.sendMessage(midd, None, contentMetadata={'PRDID': 'a0768339-c2d3-4189-9653-2909e9bb6f58', 'PRDTYPE': 'THEME', 'MSGTPL': '6'}, contentType=9)
                                       kc.sendMessage(midd, None, contentMetadata={'PRDID': 'a0768339-c2d3-4189-9653-2909e9bb6f58', 'PRDTYPE': 'THEME', 'MSGTPL': '6'}, contentType=9)
@@ -2299,10 +2299,10 @@ def bot(op):
                               jumlah = int(korban2[1])
                               if jumlah <= 1000:
                                   for var in range(0,jumlah):
-                                      aditmadzs.sendMessage(midd, str(Setmain["ADITMADZSmessage"]))
-                                      ki.sendMessage(midd, str(Setmain["ADITMADZSmessage"]))
-                                      kk.sendMessage(midd, str(Setmain["ADITMADZSmessage"]))
-                                      kc.sendMessage(midd, str(Setmain["ADITMADZSmessage"]))
+                                      ali.sendMessage(midd, str(Setmain["alimessage"]))
+                                      ki.sendMessage(midd, str(Setmain["alimessage"]))
+                                      kk.sendMessage(midd, str(Setmain["alimessage"]))
+                                      kc.sendMessage(midd, str(Setmain["alimessage"]))
 
 #===========Settings============#
                         elif 'Welcome ' in msg.text:
@@ -2313,17 +2313,17 @@ def bot(op):
                                        msgs = "Welcome Msg sudah aktif"
                                   else:
                                        welcome.append(msg.to)
-                                       ginfo = aditmadzs.getGroup(msg.to)
+                                       ginfo = ali.getGroup(msg.to)
                                        msgs = "Welcome Msg diaktifkan\nDi Group : " +str(ginfo.name)
-                                  aditmadzs.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
+                                  ali.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
                               elif spl == 'off':
                                     if msg.to in welcome:
                                          welcome.remove(msg.to)
-                                         ginfo = aditmadzs.getGroup(msg.to)
+                                         ginfo = ali.getGroup(msg.to)
                                          msgs = "Welcome Msg dinonaktifkan\nDi Group : " +str(ginfo.name)
                                     else:
                                          msgs = "Welcome Msg sudah tidak aktif"
-                                    aditmadzs.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)
+                                    ali.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)
                                     
 #===========Protection============#                                    
 
@@ -2335,17 +2335,17 @@ def bot(op):
                                        msgs = "Protect url sudah aktif"
                                   else:
                                        protectqr.append(msg.to)
-                                       ginfo = aditmadzs.getGroup(msg.to)
+                                       ginfo = ali.getGroup(msg.to)
                                        msgs = "Protect url diaktifkan\nDi Group : " +str(ginfo.name)
-                                  aditmadzs.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
+                                  ali.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
                               elif spl == 'off':
                                     if msg.to in protectqr:
                                          protectqr.remove(msg.to)
-                                         ginfo = aditmadzs.getGroup(msg.to)
+                                         ginfo = ali.getGroup(msg.to)
                                          msgs = "Protect url dinonaktifkan\nDi Group : " +str(ginfo.name)
                                     else:
                                          msgs = "Protect url sudah tidak aktif"
-                                    aditmadzs.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)
+                                    ali.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)
 
                         elif 'Protectkick ' in msg.text:
                            if msg._from in admin:
@@ -2355,17 +2355,17 @@ def bot(op):
                                        msgs = "Protect kick sudah aktif"
                                   else:
                                        protectkick.append(msg.to)
-                                       ginfo = aditmadzs.getGroup(msg.to)
+                                       ginfo = ali.getGroup(msg.to)
                                        msgs = "Protect kick diaktifkan\nDi Group : " +str(ginfo.name)
-                                  aditmadzs.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
+                                  ali.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
                               elif spl == 'off':
                                     if msg.to in protectkick:
                                          protectkick.remove(msg.to)
-                                         ginfo = aditmadzs.getGroup(msg.to)
+                                         ginfo = ali.getGroup(msg.to)
                                          msgs = "Protect kick dinonaktifkan\nDi Group : " +str(ginfo.name)
                                     else:
                                          msgs = "Protect kick sudah tidak aktif"
-                                    aditmadzs.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)
+                                    ali.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)
 
                         elif 'protectjoin ' in msg.text:
                            if msg._from in admin:
@@ -2375,17 +2375,17 @@ def bot(op):
                                        msgs = "Protect join sudah aktif"
                                   else:
                                        protectjoin.append(msg.to)
-                                       ginfo = aditmadzs.getGroup(msg.to)
+                                       ginfo = ali.getGroup(msg.to)
                                        msgs = "Protect join diaktifkan\nDi Group : " +str(ginfo.name)
-                                  aditmadzs.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
+                                  ali.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
                               elif spl == 'off':
                                     if msg.to in protectjoin:
                                          protectjoin.remove(msg.to)
-                                         ginfo = aditmadzs.getGroup(msg.to)
+                                         ginfo = ali.getGroup(msg.to)
                                          msgs = "Protect join dinonaktifkan\nDi Group : " +str(ginfo.name)
                                     else:
                                          msgs = "Protect join sudah tidak aktif"
-                                    aditmadzs.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)
+                                    ali.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)
 
                         elif 'Protectcancel ' in msg.text:
                            if msg._from in admin:
@@ -2395,17 +2395,17 @@ def bot(op):
                                        msgs = "Protect cancel sudah aktif"
                                   else:
                                        protectcancel.append(msg.to)
-                                       ginfo = aditmadzs.getGroup(msg.to)
+                                       ginfo = ali.getGroup(msg.to)
                                        msgs = "Protect cancel diaktifkan\nDi Group : " +str(ginfo.name)
-                                  aditmadzs.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
+                                  ali.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
                               elif spl == 'off':
                                     if msg.to in protectcancel:
                                          protectcancel.remove(msg.to)
-                                         ginfo = aditmadzs.getGroup(msg.to)
+                                         ginfo = ali.getGroup(msg.to)
                                          msgs = "Protect cancel dinonaktifkan\nDi Group : " +str(ginfo.name)
                                     else:
                                          msgs = "Protect cancel sudah tidak aktif"
-                                    aditmadzs.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)
+                                    ali.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)
                                     
                         elif 'Protectinvite ' in msg.text:
                            if msg._from in admin:
@@ -2415,17 +2415,17 @@ def bot(op):
                                        msgs = "Protect invite sudah aktif"
                                   else:
                                        protectinvite.append(msg.to)
-                                       ginfo = aditmadzs.getGroup(msg.to)
+                                       ginfo = ali.getGroup(msg.to)
                                        msgs = "Protect invite diaktifkan\nDi Group : " +str(ginfo.name)
-                                  aditmadzs.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
+                                  ali.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
                               elif spl == 'off':
                                     if msg.to in protectinvite:
                                          protectinvite.remove(msg.to)
-                                         ginfo = aditmadzs.getGroup(msg.to)
+                                         ginfo = ali.getGroup(msg.to)
                                          msgs = "Protect invite dinonaktifkan\nDi Group : " +str(ginfo.name)
                                     else:
                                          msgs = "Protect invite sudah tidak aktif"
-                                    aditmadzs.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)                                                 
+                                    ali.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)                                                 
 
                         elif 'Ditpro ' in msg.text:
                            if msg._from in admin:
@@ -2448,13 +2448,13 @@ def bot(op):
                                   else:
                                       protectjoin.append(msg.to)
                                   if msg.to in protectcancel:
-                                      ginfo = aditmadzs.getGroup(msg.to)
+                                      ginfo = ali.getGroup(msg.to)
                                       msgs = "ALL protect sudah on\nDi Group : " +str(ginfo.name)
                                   else:
                                       protectcancel.append(msg.to)
-                                      ginfo = aditmadzs.getGroup(msg.to)
+                                      ginfo = ali.getGroup(msg.to)
                                       msgs = "Sudah mengaktifkan semua protect\nDi Group : " +str(ginfo.name)
-                                  aditmadzs.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
+                                  ali.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
                               elif spl == 'off':
                                     if msg.to in protectqr:
                                          protectqr.remove(msg.to)
@@ -2474,12 +2474,12 @@ def bot(op):
                                          msgs = ""
                                     if msg.to in protectcancel:
                                          protectcancel.remove(msg.to)
-                                         ginfo = aditmadzs.getGroup(msg.to)
+                                         ginfo = ali.getGroup(msg.to)
                                          msgs = "ALL protect sudah off\nDi Group : " +str(ginfo.name)
                                     else:
-                                         ginfo = aditmadzs.getGroup(msg.to)
+                                         ginfo = ali.getGroup(msg.to)
                                          msgs = "Sudah menonaktifkan semua protect\nDi Group : " +str(ginfo.name)
-                                    aditmadzs.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)
+                                    ali.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)
 
 #===========KICKOUT============#
                         elif ("Kick " in msg.text):
@@ -2511,7 +2511,7 @@ def bot(op):
                                            admin[target] = True
                                            f=codecs.open('admin.json','w','utf-8')
                                            json.dump(admin, f, sort_keys=True, indent=4,ensure_ascii=False)                                             
-                                           aditmadzs.sendMessage(msg.to,"Berhasil menambahkan admin")
+                                           ali.sendMessage(msg.to,"Berhasil menambahkan admin")
                                        except:
                                            pass
 
@@ -2526,7 +2526,7 @@ def bot(op):
                                for target in targets:
                                        try:
                                            staff.append(target)
-                                           aditmadzs.sendMessage(msg.to,"Berhasil menambahkan staff")
+                                           ali.sendMessage(msg.to,"Berhasil menambahkan staff")
                                        except:
                                            pass
 
@@ -2541,7 +2541,7 @@ def bot(op):
                                for target in targets:
                                        try:
                                            Bots.append(target)
-                                           aditmadzs.sendMessage(msg.to,"Berhasil menambahkan bot")
+                                           ali.sendMessage(msg.to,"Berhasil menambahkan bot")
                                        except:
                                            pass
 
@@ -2558,7 +2558,7 @@ def bot(op):
                                            del admin[target]
                                            f=codecs.open('admin.json','w','utf-8')
                                            json.dump(admin, f, sort_keys=True, indent=4,ensure_ascii=False)                                            
-                                           aditmadzs.sendMessage(msg.to,"Berhasil menghapus admin")
+                                           ali.sendMessage(msg.to,"Berhasil menghapus admin")
                                        except:
                                            pass
 
@@ -2573,7 +2573,7 @@ def bot(op):
                                    if target not in Madzs:
                                        try:
                                            staff.remove(target)
-                                           aditmadzs.sendMessage(msg.to,"Berhasil menghapus Staff")
+                                           ali.sendMessage(msg.to,"Berhasil menghapus Staff")
                                        except:
                                            pass
 
@@ -2588,39 +2588,39 @@ def bot(op):
                                    if target not in Madzs:
                                        try:
                                            Bots.remove(target)
-                                           aditmadzs.sendMessage(msg.to,"Berhasil menghapus bot")
+                                           ali.sendMessage(msg.to,"Berhasil menghapus bot")
                                        except:
                                            pass
 
                         elif cmd == "admin:on" or text.lower() == 'admin:on':
                             if msg._from in admin:
                                 wait["addadmin"] = True
-                                aditmadzs.sendMessage(msg.to,"Send kontaknya")
+                                ali.sendMessage(msg.to,"Send kontaknya")
 
                         elif cmd == "admin:repeat" or text.lower() == 'admin:repeat':
                             if msg._from in admin:
                                 wait["delladmin"] = True
-                                aditmadzs.sendMessage(msg.to,"Send kontaknya")
+                                ali.sendMessage(msg.to,"Send kontaknya")
 
                         elif cmd == "staff:on" or text.lower() == 'staff:on':
                             if msg._from in admin:
                                 wait["addstaff"] = True
-                                aditmadzs.sendMessage(msg.to,"Send kontaknya")
+                                ali.sendMessage(msg.to,"Send kontaknya")
 
                         elif cmd == "staff:repeat" or text.lower() == 'staff:repeat':
                             if msg._from in admin:
                                 wait["dellstaff"] = True
-                                aditmadzs.sendMessage(msg.to,"Send kontaknya")
+                                ali.sendMessage(msg.to,"Send kontaknya")
 
                         elif cmd == "bot:on" or text.lower() == 'bot:on':
                             if msg._from in admin:
                                 wait["addbots"] = True
-                                aditmadzs.sendMessage(msg.to,"Send kontaknya")
+                                ali.sendMessage(msg.to,"Send kontaknya")
 
                         elif cmd == "bot:repeat" or text.lower() == 'bot:repeat':
                             if msg._from in admin:
                                 wait["dellbots"] = True
-                                aditmadzs.sendMessage(msg.to,"Send kontaknya")
+                                ali.sendMessage(msg.to,"Send kontaknya")
 
                         elif cmd == "refresh" or text.lower() == 'refresh':
                             if msg._from in admin:
@@ -2634,125 +2634,125 @@ def bot(op):
                                 wait["dblacklist"] = False
                                 wait["Talkwblacklist"] = False
                                 wait["Talkdblacklist"] = False
-                                aditmadzs.sendMessage(msg.to,"Refresh Done!")
+                                ali.sendMessage(msg.to,"Refresh Done!")
 
                         elif cmd == "contact admin" or text.lower() == 'contact admin':
                             if msg._from in admin:
                                 ma = ""
                                 for i in admin:
-                                    ma = aditmadzs.getContact(i)
-                                    aditmadzs.sendMessage(msg.to, None, contentMetadata={'mid': i}, contentType=13)
+                                    ma = ali.getContact(i)
+                                    ali.sendMessage(msg.to, None, contentMetadata={'mid': i}, contentType=13)
 
                         elif cmd == "contact staff" or text.lower() == 'contact staff':
                             if msg._from in admin:
                                 ma = ""
                                 for i in staff:
-                                    ma = aditmadzs.getContact(i)
-                                    aditmadzs.sendMessage(msg.to, None, contentMetadata={'mid': i}, contentType=13)
+                                    ma = ali.getContact(i)
+                                    ali.sendMessage(msg.to, None, contentMetadata={'mid': i}, contentType=13)
 
                         elif cmd == "contact bot" or text.lower() == 'contact bot':
                             if msg._from in admin:
                                 ma = ""
                                 for i in Bots:
-                                    ma = aditmadzs.getContact(i)
-                                    aditmadzs.sendMessage(msg.to, None, contentMetadata={'mid': i}, contentType=13)
+                                    ma = ali.getContact(i)
+                                    ali.sendMessage(msg.to, None, contentMetadata={'mid': i}, contentType=13)
 
 #===========COMMAND ON OFF============#
                         elif cmd == "notag on" or text.lower() == 'notag on':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 wait["Mentionkick"] = True
-                                aditmadzs.sendMessage(msg.to,"Notag diaktifkan")
+                                ali.sendMessage(msg.to,"Notag diaktifkan")
 
                         elif cmd == "notag off" or text.lower() == 'notag off':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 wait["Mentionkick"] = False
-                                aditmadzs.sendMessage(msg.to,"Notag dinonaktifkan")
+                                ali.sendMessage(msg.to,"Notag dinonaktifkan")
 
                         elif cmd == "contact on" or text.lower() == 'contact on':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 wait["contact"] = True
-                                aditmadzs.sendMessage(msg.to,"Deteksi contact diaktifkan")
+                                ali.sendMessage(msg.to,"Deteksi contact diaktifkan")
 
                         elif cmd == "contact off" or text.lower() == 'contact off':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 wait["contact"] = False
-                                aditmadzs.sendMessage(msg.to,"Deteksi contact dinonaktifkan")
+                                ali.sendMessage(msg.to,"Deteksi contact dinonaktifkan")
 
                         elif cmd == "respon on" or text.lower() == 'respon on':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 wait["detectMention"] = True
-                                aditmadzs.sendMessage(msg.to,"Auto respon diaktifkan")
+                                ali.sendMessage(msg.to,"Auto respon diaktifkan")
 
                         elif cmd == "respon off" or text.lower() == 'respon off':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 wait["detectMention"] = False
-                                aditmadzs.sendMessage(msg.to,"Auto respon dinonaktifkan")                   
+                                ali.sendMessage(msg.to,"Auto respon dinonaktifkan")                   
 
                         elif cmd == "autojoin on" or text.lower() == 'autojoin on':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 wait["autoJoin"] = True
-                                aditmadzs.sendMessage(msg.to,"Autojoin diaktifkan")
+                                ali.sendMessage(msg.to,"Autojoin diaktifkan")
 
                         elif cmd == "autojoin off" or text.lower() == 'autojoin off':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 wait["autoJoin"] = False
-                                aditmadzs.sendMessage(msg.to,"Autojoin dinonaktifkan")
+                                ali.sendMessage(msg.to,"Autojoin dinonaktifkan")
 
                         elif cmd == "autoleave on" or text.lower() == 'autoleave on':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 wait["autoLeave"] = True
-                                aditmadzs.sendMessage(msg.to,"Autoleave diaktifkan")
+                                ali.sendMessage(msg.to,"Autoleave diaktifkan")
 
                         elif cmd == "autoleave off" or text.lower() == 'autoleave off':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 wait["autoLeave"] = False
-                                aditmadzs.sendMessage(msg.to,"Autoleave dinonaktifkan")
+                                ali.sendMessage(msg.to,"Autoleave dinonaktifkan")
 
                         elif cmd == "autoadd on" or text.lower() == 'autoadd on':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 wait["autoAdd"] = True
-                                aditmadzs.sendMessage(msg.to,"Auto add diaktifkan")
+                                ali.sendMessage(msg.to,"Auto add diaktifkan")
 
                         elif cmd == "autoadd off" or text.lower() == 'autoadd off':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 wait["autoAdd"] = False
-                                aditmadzs.sendMessage(msg.to,"Auto add dinonaktifkan")
+                                ali.sendMessage(msg.to,"Auto add dinonaktifkan")
 
                         elif cmd == "sticker on" or text.lower() == 'sticker on':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 wait["sticker"] = True
-                                aditmadzs.sendMessage(msg.to,"Deteksi sticker diaktifkan")
+                                ali.sendMessage(msg.to,"Deteksi sticker diaktifkan")
 
                         elif cmd == "sticker off" or text.lower() == 'sticker off':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 wait["sticker"] = False
-                                aditmadzs.sendMessage(msg.to,"Deteksi sticker dinonaktifkan")
+                                ali.sendMessage(msg.to,"Deteksi sticker dinonaktifkan")
 
                         elif cmd == "jointicket on" or text.lower() == 'jointicket on':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 settings["autoJoinTicket"] = True
-                                aditmadzs.sendMessage(msg.to,"Join ticket diaktifkan")
+                                ali.sendMessage(msg.to,"Join ticket diaktifkan")
 
                         elif cmd == "jointicket off" or text.lower() == 'jointicket off':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 settings["autoJoinTicket"] = False
-                                aditmadzs.sendMessage(msg.to,"Join Ticket dinonaktifkan")
+                                ali.sendMessage(msg.to,"Join Ticket dinonaktifkan")
 
 #===========COMMAND BLACKLIST============#
                         elif ("Ban " in msg.text):
@@ -2766,7 +2766,7 @@ def bot(op):
                                for target in targets:
                                        try:
                                            wait["blacklist"][target] = True
-                                           aditmadzs.sendMessage(msg.to,"Berhasil menambahkan blacklist")
+                                           ali.sendMessage(msg.to,"Berhasil menambahkan blacklist")
                                        except:
                                            pass
 
@@ -2781,7 +2781,7 @@ def bot(op):
                                for target in targets:
                                        try:
                                            del wait["blacklist"][target]
-                                           aditmadzs.sendMessage(msg.to,"Berhasil menghapus blacklist")
+                                           ali.sendMessage(msg.to,"Berhasil menghapus blacklist")
                                        except:
                                            pass
 
@@ -2789,94 +2789,94 @@ def bot(op):
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 wait["wblacklist"] = True
-                                aditmadzs.sendMessage(msg.to,"Send kontaknya")
+                                ali.sendMessage(msg.to,"Send kontaknya")
 
                         elif cmd == "unban:on" or text.lower() == 'unban:on':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                                 wait["dblacklist"] = True
-                                aditmadzs.sendMessage(msg.to,"Send kontaknya")
+                                ali.sendMessage(msg.to,"Send kontaknya")
 
                         elif cmd == "banlist" or text.lower() == 'banlist':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                               if wait["blacklist"] == {}:
-                                aditmadzs.sendMessage(msg.to,"Tidak ada blacklist")
+                                ali.sendMessage(msg.to,"Tidak ada blacklist")
                               else:
                                 ma = ""
                                 a = 0
                                 for m_id in wait["blacklist"]:
                                     a = a + 1
                                     end = '\n'
-                                    ma += str(a) + ". " +aditmadzs.getContact(m_id).displayName + "\n"
-                                aditmadzs.sendMessage(msg.to,"»» Blacklist User\n\n"+ma+"\nTotal「%s」Blacklist User" %(str(len(wait["blacklist"]))))
+                                    ma += str(a) + ". " +ali.getContact(m_id).displayName + "\n"
+                                ali.sendMessage(msg.to,"»» Blacklist User\n\n"+ma+"\nTotal「%s」Blacklist User" %(str(len(wait["blacklist"]))))
 
                         elif cmd == "blc" or text.lower() == 'blc':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                               if wait["blacklist"] == {}:
-                                    aditmadzs.sendMessage(msg.to,"Tidak ada blacklist")
+                                    ali.sendMessage(msg.to,"Tidak ada blacklist")
                               else:
                                     ma = ""
                                     for i in wait["blacklist"]:
-                                        ma = aditmadzs.getContact(i)
-                                        aditmadzs.sendMessage(msg.to, None, contentMetadata={'mid': i}, contentType=13)
+                                        ma = ali.getContact(i)
+                                        ali.sendMessage(msg.to, None, contentMetadata={'mid': i}, contentType=13)
 
                         elif cmd == "clearban" or text.lower() == 'clearban':
                           if wait["selfbot"] == True:
                             if msg._from in admin:
                               wait["blacklist"] = {}
-                              ragets = aditmadzs.getContacts(wait["blacklist"])
+                              ragets = ali.getContacts(wait["blacklist"])
                               mc = "[%i]User Blacklist" % len(ragets)
-                              aditmadzs.sendMessage(msg.to,"Kalian di maafkan " +mc)
+                              ali.sendMessage(msg.to,"Kalian di maafkan " +mc)
 #===========COMMAND SET============#
                         elif 'Set pesan: ' in msg.text:
                            if msg._from in admin:
                               spl = msg.text.replace('Set pesan: ','')
                               if spl in [""," ","\n",None]:
-                                  aditmadzs.sendMessage(msg.to, "Gagal mengganti Pesan Msg")
+                                  ali.sendMessage(msg.to, "Gagal mengganti Pesan Msg")
                               else:
                                   wait["message"] = spl
-                                  aditmadzs.sendMessage(msg.to, "「Pesan Msg」\nPesan Msg diganti jadi :\n\n「{}」".format(str(spl)))
+                                  ali.sendMessage(msg.to, "「Pesan Msg」\nPesan Msg diganti jadi :\n\n「{}」".format(str(spl)))
                                   
                         elif 'Set leave: ' in msg.text:
                            if msg._from in admin:
                               spl = msg.text.replace('Set leave: ','')
                               if spl in [""," ","\n",None]:
-                                  aditmadzs.sendMessage(msg.to, "Gagal mengganti Leave Msg")
+                                  ali.sendMessage(msg.to, "Gagal mengganti Leave Msg")
                               else:
                                   wait["leave"] = spl
-                                  aditmadzs.sendMessage(msg.to, "「Leave Msg」\nLeave Msg diganti jadi :\n\n「{}」".format(str(spl)))                                    
+                                  ali.sendMessage(msg.to, "「Leave Msg」\nLeave Msg diganti jadi :\n\n「{}」".format(str(spl)))                                    
 
                         elif 'Set respon: ' in msg.text:
                            if msg._from in admin:
                               spl = msg.text.replace('Set respon: ','')
                               if spl in [""," ","\n",None]:
-                                  aditmadzs.sendMessage(msg.to, "Gagal mengganti Respon Msg")
+                                  ali.sendMessage(msg.to, "Gagal mengganti Respon Msg")
                               else:
                                   wait["Respontag"] = spl
-                                  aditmadzs.sendMessage(msg.to, "「Respon Msg」\nRespon Msg diganti jadi :\n\n「{}」".format(str(spl)))
+                                  ali.sendMessage(msg.to, "「Respon Msg」\nRespon Msg diganti jadi :\n\n「{}」".format(str(spl)))
 
                         elif 'Set spam: ' in msg.text:
                            if msg._from in admin:
                               spl = msg.text.replace('Set spam: ','')
                               if spl in [""," ","\n",None]:
-                                  aditmadzs.sendMessage(msg.to, "Gagal mengganti Spam")
+                                  ali.sendMessage(msg.to, "Gagal mengganti Spam")
                               else:
-                                  Setmain["ADITMADZSmessage"] = spl
-                                  aditmadzs.sendMessage(msg.to, "「Spam Msg」\nSpam Msg diganti jadi :\n\n「{}」".format(str(spl)))
+                                  Setmain["alimessage"] = spl
+                                  ali.sendMessage(msg.to, "「Spam Msg」\nSpam Msg diganti jadi :\n\n「{}」".format(str(spl)))
 
                         elif text.lower() == "cek pesan":
                             if msg._from in admin:
-                               aditmadzs.sendMessage(msg.to, "「Pesan Msg」\nPesan Msg mu :\n\n「 " + str(wait["message"]) + " 」")
+                               ali.sendMessage(msg.to, "「Pesan Msg」\nPesan Msg mu :\n\n「 " + str(wait["message"]) + " 」")
 
                         elif text.lower() == "cek respon":
                             if msg._from in admin:
-                               aditmadzs.sendMessage(msg.to, "「Respon Msg」\nRespon Msg mu :\n\n「 " + str(wait["Respontag"]) + " 」")
+                               ali.sendMessage(msg.to, "「Respon Msg」\nRespon Msg mu :\n\n「 " + str(wait["Respontag"]) + " 」")
 
                         elif text.lower() == "cek spam":
                             if msg._from in admin:
-                               aditmadzs.sendMessage(msg.to, "「Spam Msg」\nSpam Msg mu :\n\n「 " + str(Setmain["ADITMADZSmessage"]) + " 」")
+                               ali.sendMessage(msg.to, "「Spam Msg」\nSpam Msg mu :\n\n「 " + str(Setmain["alimessage"]) + " 」")
 
 #===========JOIN TICKET============#
                         elif "/ti/g/" in msg.text.lower():
@@ -2889,18 +2889,18 @@ def bot(op):
                                      if l not in n_links:
                                         n_links.append(l)
                                  for ticket_id in n_links:
-                                     group = aditmadzs.findGroupByTicket(ticket_id)
-                                     aditmadzs.acceptGroupInvitationByTicket(group.id,ticket_id)
-                                     aditmadzs.sendMessage(msg.to, "ADITMADZS OTW JOIN GROUP : %s" % str(group.name))
+                                     group = ali.findGroupByTicket(ticket_id)
+                                     ali.acceptGroupInvitationByTicket(group.id,ticket_id)
+                                     ali.sendMessage(msg.to, "ali OTW JOIN GROUP : %s" % str(group.name))
                                      group1 = ki.findGroupByTicket(ticket_id)
                                      ki.acceptGroupInvitationByTicket(group1.id,ticket_id)
-                                     ki.sendMessage(msg.to, "ADITMADZS OTW JOIN GROUP : %s" % str(group.name))
+                                     ki.sendMessage(msg.to, "ali OTW JOIN GROUP : %s" % str(group.name))
                                      group2 = kk.findGroupByTicket(ticket_id)
                                      kk.acceptGroupInvitationByTicket(group2.id,ticket_id)
-                                     kk.sendMessage(msg.to, "ADITMADZS OTW JOIN GROUP : %s" % str(group.name))
+                                     kk.sendMessage(msg.to, "ali OTW JOIN GROUP : %s" % str(group.name))
                                      group3 = kc.findGroupByTicket(ticket_id)
                                      kc.acceptGroupInvitationByTicket(group3.id,ticket_id)
-                                     kc.sendMessage(msg.to, "ADITMADZS OTW JOIN GROUP : %s" % str(group.name))
+                                     kc.sendMessage(msg.to, "ali OTW JOIN GROUP : %s" % str(group.name))
 
     except Exception as error:
         print (error)
