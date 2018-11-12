@@ -36,10 +36,10 @@ kc.log("Channel Access Token : " + str(channel3.channelAccessToken))
 
 poll = LinePoll(ali)
 call = ali
-creator = ["c66a646a8b5ecc8e0ebf74d920670f02d"]
-owner = ["c66a646a8b5ecc8e0ebf74d920670f02d"]
-admin = ["c66a646a8b5ecc8e0ebf74d920670f02d"]
-staff = ["c66a646a8b5ecc8e0ebf74d920670f02d"]
+creator = ["u1249c600ed5713961da8b8c0bf9ba3ff"]
+owner = ["u1249c600ed5713961da8b8c0bf9ba3ff"]
+admin = ["u1249c600ed5713961da8b8c0bf9ba3ff"]
+staff = ["u1249c600ed5713961da8b8c0bf9ba3ff"]
 mid = ali.getProfile().mid
 Amid = ki.getProfile().mid
 Bmid = kk.getProfile().mid
