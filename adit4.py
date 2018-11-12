@@ -29,25 +29,25 @@ kc.log("Auth Token : " + str(kc.authToken))
 channel3 = LineChannel(kc)
 kc.log("Channel Access Token : " + str(channel3.channelAccessToken))
 
-kb = LineClient(authToken='.EyAeGIrr4dsBX6VwWMg4.pde2KJeBHPvkFvAKqncO9a.+2HxYrsakC6QufzHG84VXhSonD56pUmfh6cYf50gL8M=')
-kb.log("Auth Token : " + str(kc.authToken))
-channel4 = LineChannel(kc)
-kb.log("Channel Access Token : " + str(channel3.channelAccessToken))
+#kb = LineClient(authToken='.EyAeGIrr4dsBX6VwWMg4.pde2KJeBHPvkFvAKqncO9a.+2HxYrsakC6QufzHG84VXhSonD56pUmfh6cYf50gL8M=')
+#kb.log("Auth Token : " + str(kc.authToken))
+#channel4 = LineChannel(kc)
+#kb.log("Channel Access Token : " + str(channel3.channelAccessToken))
 
 poll = LinePoll(aditmadzs)
 call = aditmadzs
-creator = ["ube71e680ce15b31bf6de5a10798080d5"]
-owner = ["ube71e680ce15b31bf6de5a10798080d5"]
-admin = ["ube71e680ce15b31bf6de5a10798080d5"]
-staff = ["ube71e680ce15b31bf6de5a10798080d5"]
+creator = ["u1249c600ed5713961da8b8c0bf9ba3ff"]
+owner = ["u1249c600ed5713961da8b8c0bf9ba3ff"]
+admin = ["u1249c600ed5713961da8b8c0bf9ba3ff"]
+staff = ["u1249c600ed5713961da8b8c0bf9ba3ff"]
 mid = aditmadzs.getProfile().mid
 Amid = ki.getProfile().mid
 Bmid = kk.getProfile().mid
 Cmid = kc.getProfile().mid
-Dmid = kb.getProfile().mid
-KAC = [aditmadzs,ki,kk,kc,kb]
-ABC = [ki,kk,kc,kb]
-Bots = [mid,Amid,Bmid,Cmid,Dmid]
+#Dmid = kb.getProfile().mid
+KAC = [aditmadzs,ki,kk,kc]
+ABC = [ki,kk,kc]
+Bots = [mid,Amid,Bmid,Cmid]
 Madzs = admin + staff
 
 protectqr = []
@@ -72,7 +72,7 @@ myProfile["pictureStatus"] = MadzsProfile.pictureStatus
 responsename1 = ki.getProfile().displayName
 responsename2 = kk.getProfile().displayName
 responsename3 = kc.getProfile().displayName
-responsename3 = kb.getProfile().displayName
+#responsename3 = kb.getProfile().displayName
 
 cctv = {
     "cyduk":{},
@@ -2088,7 +2088,7 @@ def bot(op):
                                 ki.sendMessage(msg.to,responsename1)
                                 kk.sendMessage(msg.to,responsename2)
                                 kc.sendMessage(msg.to,responsename3)
-                                kb.sendMessage(msg.to,responsename4)
+                             #   kb.sendMessage(msg.to,responsename4)
     
                         elif cmd == "join dit":
                           if wait["selfbot"] == True:
@@ -2102,7 +2102,7 @@ def bot(op):
                                 ki.acceptGroupInvitationByTicket(msg.to,Ticket)
                                 kk.acceptGroupInvitationByTicket(msg.to,Ticket)
                                 kc.acceptGroupInvitationByTicket(msg.to,Ticket)
-                                kb.acceptGroupInvitationByTicket(msg.to,Ticket)
+                      #          kb.acceptGroupInvitationByTicket(msg.to,Ticket)
                                 G = kc.getGroup(msg.to)
                                 G.preventedJoinByTicket = True
                                 kc.updateGroup(G)
@@ -2115,7 +2115,7 @@ def bot(op):
                                 ki.leaveGroup(msg.to)
                                 kk.leaveGroup(msg.to)
                                 kc.leaveGroup(msg.to)
-                                 kb.leaveGroup(msg.to)
+                             #    kb.leaveGroup(msg.to)
 
                         elif cmd == "sprespon":
                           if wait["selfbot"] == True:
